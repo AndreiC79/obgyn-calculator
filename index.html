@@ -1,27 +1,18 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:system-ui,sans-serif;background:#f0f4f8;min-height:100vh}
-
-/* TOP NAV */
-.topbar{background:#1e293b;padding:0.85rem 1rem;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:100}
-.topbar-title{color:#fff;font-size:15px;font-weight:700;flex:1}
-.topbar-sub{color:#64748b;font-size:11px}
-
-/* DROPDOWN SELECTORS */
+.topbar{background:#1e293b;padding:0.85rem 1rem;position:sticky;top:0;z-index:100}
+.topbar-title{color:#fff;font-size:15px;font-weight:700}
+.topbar-sub{color:#64748b;font-size:11px;margin-top:1px}
 .selectors{background:#1e293b;padding:0 1rem 0.85rem;display:flex;gap:8px;flex-wrap:wrap}
 .sel-group{display:flex;flex-direction:column;gap:3px;flex:1;min-width:140px}
 .sel-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#64748b;padding-left:2px}
-.sel-group select{padding:8px 10px;border-radius:9px;border:1.5px solid #334155;background:#0f172a;color:#e2e8f0;font-size:13px;font-weight:500;cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:28px}
+.sel-group select{padding:8px 10px;border-radius:9px;border:1.5px solid #334155;background:#0f172a;color:#e2e8f0;font-size:13px;font-weight:500;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:28px}
 .sel-group select:focus{outline:none;border-color:var(--acc,#3b82f6)}
-
-/* ACTIVE CALC BADGE */
 .active-badge{margin:1rem 1rem 0;display:flex;align-items:center;gap:10px}
 .badge-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;background:var(--acc-l)}
-.badge-text{flex:1}
 .badge-name{font-size:15px;font-weight:700;color:#1e293b}
 .badge-sub{font-size:11px;color:#64748b;margin-top:1px}
-
-/* MAIN */
 .main{padding:0.75rem 1rem 2rem}
 .card{background:#fff;border-radius:14px;padding:1.1rem;margin-bottom:0.85rem;box-shadow:0 1px 4px rgba(0,0,0,0.06)}
 .card-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;color:#94a3b8;margin-bottom:0.8rem}
@@ -48,16 +39,37 @@ body{font-family:system-ui,sans-serif;background:#f0f4f8;min-height:100vh}
 .bg{background:#dcfce7;color:#166534}.by{background:#fef9c3;color:#854d0e}.bo{background:#ffedd5;color:#9a3412}.br{background:#fee2e2;color:#991b1b}.bb{background:#dbeafe;color:#1e40af}.bp{background:#fce7f3;color:#9d174d}
 .chk-row{display:flex;align-items:center;gap:10px;font-size:13px;cursor:pointer;padding:7px 10px;border-radius:8px;border:1.5px solid #e2e8f0;background:#f8fafc}
 .divider{border:none;border-top:1.5px solid #f1f5f9;margin:0.85rem 0}
+/* DISCLAIMER */
+.disc-wrap{margin-top:0.85rem;border-radius:10px;border:1px solid #e2e8f0;overflow:hidden}
+.disc-toggle{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#f8fafc;cursor:pointer;font-size:12px;font-weight:600;color:#64748b;user-select:none}
+.disc-toggle:hover{background:#f1f5f9}
+.disc-arrow{font-size:10px;transition:transform 0.2s}
+.disc-body{display:none;padding:10px 12px;font-size:11px;color:#64748b;line-height:1.6;background:#fff;border-top:1px solid #e2e8f0}
+.disc-body.open{display:block}
+.disc-body a{color:var(--acc);text-decoration:none}
+/* FMF SPECIFIC */
+.fmf-module{background:#f8fafc;border-radius:10px;padding:0.85rem;border:1.5px solid #e2e8f0;margin-bottom:0.6rem}
+.fmf-module-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.6rem}
+.fmf-module-title{font-size:12px;font-weight:700;color:#475569}
+.fmf-toggle{font-size:11px;padding:3px 8px;border-radius:6px;border:1px solid #e2e8f0;background:#fff;cursor:pointer;color:#64748b}
+.fmf-toggle.active{background:var(--acc);color:#fff;border-color:var(--acc)}
+.fmf-fields{display:none}
+.fmf-fields.open{display:block}
+.risk-box{border-radius:10px;padding:1rem;margin-top:0.5rem;text-align:center}
+.risk-high{background:#fee2e2;border:2px solid #fca5a5}
+.risk-int{background:#ffedd5;border:2px solid #fdba74}
+.risk-low{background:#dcfce7;border:2px solid #86efac}
+.risk-val{font-size:28px;font-weight:700;margin-bottom:4px}
+.risk-high .risk-val{color:#991b1b}
+.risk-int .risk-val{color:#9a3412}
+.risk-low .risk-val{color:#166534}
 @media(max-width:480px){.grid2{grid-template-columns:1fr}.grid3{grid-template-columns:1fr}}
 </style>
 
 <div class="topbar">
-  <div>
-    <div class="topbar-title">OB/GYN Calculator Suite</div>
-    <div class="topbar-sub">Calculator clinic · Română</div>
-  </div>
+  <div class="topbar-title">OB/GYN Calculator Suite</div>
+  <div class="topbar-sub">Calculator clinic · Română</div>
 </div>
-
 <div class="selectors">
   <div class="sel-group">
     <div class="sel-label">Specialitate</div>
@@ -71,7 +83,6 @@ body{font-family:system-ui,sans-serif;background:#f0f4f8;min-height:100vh}
     <select id="sel-calc" onchange="onCalcChange()"></select>
   </div>
 </div>
-
 <div class="active-badge" id="active-badge"></div>
 <div class="main" id="main"></div>
 
@@ -79,96 +90,138 @@ body{font-family:system-ui,sans-serif;background:#f0f4f8;min-height:100vh}
 const C={
   obs:[
     {id:'ga',acc:'#3b82f6',icon:'📅',name:'Vârstă gestațională & DPN',sub:'Data probabilă a nașterii din LMP, ecografie sau concepție'},
-    {id:'efw',acc:'#8b5cf6',icon:'⚖️',name:'Greutate fetală estimată (EFW)',sub:'Formula Hadlock cu măsurători biometrice'},
-    {id:'bishop',acc:'#10b981',icon:'📋',name:'Scor Bishop',sub:'Evaluarea colului uterin pentru inducerea travaliului'},
-    {id:'bpp',acc:'#06b6d4',icon:'🔊',name:'Profil biofizic (Manning)',sub:'Scorul Manning cu 5 parametri'},
-    {id:'mcapsv',acc:'#0284c7',icon:'🔴',name:'MCA-PSV – Anemie fetală',sub:'Viteza sistolică maximă pe artera cerebrală medie'},
-    {id:'cpr',acc:'#7c3aed',icon:'🔁',name:'Raport cerebro-placentar (CPR)',sub:'PI MCA / PI arteră ombilicală – brain sparing'},
-    {id:'afi',acc:'#0ea5e9',icon:'💧',name:'ILA – Lichid amniotic',sub:'Indicele lichidului amniotic din 4 cadrane'},
-    {id:'vbac',acc:'#f59e0b',icon:'🏥',name:'VBAC (Grobman)',sub:'Probabilitatea nașterii vaginale după cezariană'},
-    {id:'hellp',acc:'#ef4444',icon:'🩺',name:'Scor HELLP',sub:'Criterii de diagnostic pentru sindromul HELLP'},
-    {id:'shock',acc:'#dc2626',icon:'❤️',name:'Indice de șoc & qSOFA',sub:'Evaluare hemodinamică și risc sepsis'},
-    {id:'pph',acc:'#e11d48',icon:'🩸',name:'Risc hemoragie postpartum',sub:'Stratificare ACOG/CMQCC pre-naștere'},
-    {id:'preeclampsia',acc:'#7c3aed',icon:'🧠',name:'Risc preeclampsie',sub:'Calculator risc trimestrul I (FMF-based)'},
-    {id:'mgso4',acc:'#0d9488',icon:'💊',name:'Dozare sulfat de magneziu',sub:'Doze pentru preeclampsie severă și neuroprotecție'},
+    {id:'fmf',acc:'#6366f1',icon:'🧬',name:'Screening T1 – Risc trisomii (FMF)',sub:'Metodă FMF: NT, PAPP-A, β-hCG, os nazal, DV, TA, PlGF'},
+    {id:'efw',acc:'#8b5cf6',icon:'⚖️',name:'Greutate fetală estimată (EFW)',sub:'Formula Hadlock'},
+    {id:'bishop',acc:'#10b981',icon:'📋',name:'Scor Bishop',sub:'Evaluarea colului uterin'},
+    {id:'bpp',acc:'#06b6d4',icon:'🔊',name:'Profil biofizic Manning',sub:'5 parametri BPP'},
+    {id:'mcapsv',acc:'#0284c7',icon:'🔴',name:'MCA-PSV – Anemie fetală',sub:'Viteza sistolică pe artera cerebrală medie'},
+    {id:'cpr',acc:'#7c3aed',icon:'🔁',name:'Raport cerebro-placentar (CPR)',sub:'PI MCA / PI arteră ombilicală'},
+    {id:'afi',acc:'#0ea5e9',icon:'💧',name:'ILA – Lichid amniotic',sub:'4 cadrane'},
+    {id:'vbac',acc:'#f59e0b',icon:'🏥',name:'VBAC (Grobman)',sub:'Probabilitate naștere vaginală după cezariană'},
+    {id:'hellp',acc:'#ef4444',icon:'🩺',name:'Scor HELLP',sub:'Criterii diagnostic HELLP'},
+    {id:'shock',acc:'#dc2626',icon:'❤️',name:'Indice de șoc & qSOFA',sub:'Evaluare hemodinamică'},
+    {id:'pph',acc:'#e11d48',icon:'🩸',name:'Risc hemoragie postpartum',sub:'Stratificare ACOG/CMQCC'},
+    {id:'preeclampsia',acc:'#7c3aed',icon:'🧠',name:'Risc preeclampsie',sub:'Screening trimestrul I'},
+    {id:'mgso4',acc:'#0d9488',icon:'💊',name:'Dozare sulfat de magneziu',sub:'Preeclampsie / neuroprotecție'},
     {id:'csrisk',acc:'#b45309',icon:'🔪',name:'Risc operație cezariană',sub:'Probabilitate cezariană în travaliu'},
-    {id:'twin',acc:'#7e22ce',icon:'👶',name:'Sarcina gemelară',sub:'Calculatoare specifice sarcinii gemelare'},
+    {id:'twin',acc:'#7e22ce',icon:'👶',name:'Sarcina gemelară',sub:'Calculatoare specifice'},
   ],
   gyn:[
-    {id:'rmi',acc:'#ec4899',icon:'🔬',name:'RMI – Indice risc malignitate',sub:'Masă ovariană: RMI I și RMI II'},
-    {id:'roma',acc:'#db2777',icon:'🧪',name:'Scor ROMA',sub:'HE4 + CA125 – risc cancer ovarian'},
-    {id:'bmi',acc:'#16a34a',icon:'📊',name:'IMC & Suprafață corporală',sub:'Body Mass Index și Body Surface Area'},
+    {id:'rmi',acc:'#ec4899',icon:'🔬',name:'RMI – Indice risc malignitate',sub:'Masă ovariană'},
+    {id:'roma',acc:'#db2777',icon:'🧪',name:'Scor ROMA',sub:'HE4 + CA125'},
+    {id:'bmi',acc:'#16a34a',icon:'📊',name:'IMC & Suprafață corporală',sub:'BMI și BSA'},
     {id:'menopause',acc:'#f97316',icon:'🌡️',name:'Scor simptome menopauză (MRS)',sub:'Menopause Rating Scale'},
-    {id:'endoca',acc:'#9333ea',icon:'🏥',name:'Risc cancer endometrial',sub:'Factori de risc pentru cancerul de endometru'},
-    {id:'ovres',acc:'#0891b2',icon:'🥚',name:'Rezervă ovariană',sub:'AMH, FSH, AFC – interpretare'},
-    {id:'rasrm',acc:'#dc2626',icon:'🔴',name:'Scor rASRM endometrioză',sub:'Clasificarea revizuită ASRM'},
-    {id:'enzian',acc:'#be185d',icon:'🔬',name:'Scor Enzian (DIE)',sub:'Endometrioză profundă – compartimente'},
-    {id:'pbac',acc:'#92400e',icon:'🩸',name:'Scor PBAC',sub:'Estimarea pierderilor menstruale'},
-    {id:'ecog',acc:'#1d4ed8',icon:'🚶',name:'Status performanță ECOG',sub:'Evaluarea capacității funcționale'},
+    {id:'endoca',acc:'#9333ea',icon:'🏥',name:'Risc cancer endometrial',sub:'Factori de risc'},
+    {id:'ovres',acc:'#0891b2',icon:'🥚',name:'Rezervă ovariană',sub:'AMH, FSH, AFC'},
+    {id:'rasrm',acc:'#dc2626',icon:'🔴',name:'Scor rASRM endometrioză',sub:'Clasificare revizuită ASRM'},
+    {id:'enzian',acc:'#be185d',icon:'🔬',name:'Scor Enzian (DIE)',sub:'Endometrioză profundă'},
+    {id:'pbac',acc:'#92400e',icon:'🩸',name:'Scor PBAC',sub:'Pierderi menstruale'},
+    {id:'ecog',acc:'#1d4ed8',icon:'🚶',name:'Status performanță ECOG',sub:'Capacitate funcțională'},
   ]
 };
 
-let curCat='obs', curId='ga';
-
-function onCatChange(){
-  curCat=document.getElementById('sel-cat').value;
-  buildCalcDropdown();
-  curId=C[curCat][0].id;
-  document.getElementById('sel-calc').value=curId;
-  renderCalc();
-}
-function onCalcChange(){
-  curId=document.getElementById('sel-calc').value;
-  renderCalc();
-}
-function buildCalcDropdown(){
-  const s=document.getElementById('sel-calc');
-  s.innerHTML=C[curCat].map(c=>`<option value="${c.id}">${c.icon} ${c.name}</option>`).join('');
-}
+let curCat='obs',curId='ga';
+function onCatChange(){curCat=document.getElementById('sel-cat').value;buildCalcDropdown();curId=C[curCat][0].id;document.getElementById('sel-calc').value=curId;renderCalc();}
+function onCalcChange(){curId=document.getElementById('sel-calc').value;renderCalc();}
+function buildCalcDropdown(){const s=document.getElementById('sel-calc');s.innerHTML=C[curCat].map(c=>`<option value="${c.id}">${c.icon} ${c.name}</option>`).join('');}
 function calcObj(){return [...C.obs,...C.gyn].find(x=>x.id===curId)}
-function setAccent(acc){
-  document.documentElement.style.setProperty('--acc',acc);
-  document.documentElement.style.setProperty('--acc-l',acc+'18');
-  document.documentElement.style.setProperty('--acc-d',acc);
-}
-function renderCalc(){
-  const c=calcObj();
-  setAccent(c.acc);
-  document.getElementById('active-badge').innerHTML=`
-    <div class="badge-icon">${c.icon}</div>
-    <div class="badge-text"><div class="badge-name">${c.name}</div><div class="badge-sub">${c.sub}</div></div>`;
-  document.getElementById('main').innerHTML=renders[curId]();
-  document.getElementById('sel-calc').value=curId;
-}
+function setAccent(acc){document.documentElement.style.setProperty('--acc',acc);document.documentElement.style.setProperty('--acc-l',acc+'18');document.documentElement.style.setProperty('--acc-d',acc);}
+function renderCalc(){const c=calcObj();setAccent(c.acc);document.getElementById('active-badge').innerHTML=`<div class="badge-icon">${c.icon}</div><div><div class="badge-name">${c.name}</div><div class="badge-sub">${c.sub}</div></div>`;document.getElementById('main').innerHTML=renders[curId]();document.getElementById('sel-calc').value=curId;}
 
 const today=()=>new Date().toISOString().split('T')[0];
 const fmt=d=>new Date(d).toLocaleDateString('ro-RO',{day:'2-digit',month:'long',year:'numeric'});
-function showRes(id,html){const el=document.getElementById(id);el.classList.remove('hidden');el.innerHTML=html}
+function showRes(id,html){const el=document.getElementById(id);el.classList.remove('hidden');el.innerHTML=html;}
+function toggleDisc(el){const b=el.nextElementSibling;const open=b.classList.toggle('open');el.querySelector('.disc-arrow').textContent=open?'▲':'▼';}
+function toggleFMF(id){const f=document.getElementById('fmf-f-'+id),b=document.getElementById('fmf-b-'+id);const open=f.classList.toggle('open');b.classList.toggle('active',open);b.textContent=open?'Ascunde':'Activează';}
+
+function disclaimer(source,formula,note){
+  return `<div class="disc-wrap">
+    <div class="disc-toggle" onclick="toggleDisc(this)">
+      <span>📖 Sursă & disclaimer</span><span class="disc-arrow">▼</span>
+    </div>
+    <div class="disc-body">
+      <strong>Sursă:</strong> ${source}<br>
+      <strong>Formulă:</strong> ${formula}<br>
+      <strong>Disclaimer:</strong> ${note} Acest calculator are scop orientativ și de suport clinic. Nu înlocuiește judecata clinică, ghidurile naționale sau internaționale în vigoare. Rezultatele trebuie interpretate în context clinic complet.
+    </div>
+  </div>`;
+}
 
 const renders={
+// ---- GA ----
 ga:()=>`
 <div class="card"><div class="card-title">Metodă</div>
-<div class="fg"><label>Selectează metoda</label>
-<select id="ga-m" onchange="gaMeth()">
-  <option value="lmp">Ultima menstruație (LMP)</option>
-  <option value="us">Ecografie (LCC)</option>
-  <option value="con">Data concepției</option>
-</select></div></div>
-<div class="card" id="ga-lmp"><div class="card-title">Din LMP</div>
-<div class="grid2">
-  <div class="fg"><label>Data LMP</label><input type="date" id="ga-lmpd" max="${today()}"></div>
-  <div class="fg"><label>Ciclu (zile)</label><input type="number" id="ga-cyc" value="28" min="20" max="45"></div>
-</div></div>
-<div class="card hidden" id="ga-us"><div class="card-title">Din ecografie LCC</div>
-<div class="grid2">
-  <div class="fg"><label>Data ecografiei</label><input type="date" id="ga-usd" max="${today()}"></div>
-  <div class="fg"><label>LCC (mm)</label><input type="number" id="ga-crl" placeholder="ex. 15" min="1" max="84"></div>
-</div></div>
-<div class="card hidden" id="ga-con"><div class="card-title">Din data concepției</div>
-<div class="fg"><label>Data concepției</label><input type="date" id="ga-cond" max="${today()}"></div></div>
+<div class="fg"><label>Selectează metoda</label><select id="ga-m" onchange="gaMeth()"><option value="lmp">Ultima menstruație (LMP)</option><option value="us">Ecografie (LCC)</option><option value="con">Data concepției</option></select></div></div>
+<div class="card" id="ga-lmp"><div class="card-title">Din LMP</div><div class="grid2"><div class="fg"><label>Data LMP</label><input type="date" id="ga-lmpd" max="${today()}"></div><div class="fg"><label>Ciclu (zile)</label><input type="number" id="ga-cyc" value="28" min="20" max="45"></div></div></div>
+<div class="card hidden" id="ga-us"><div class="card-title">Din ecografie LCC</div><div class="grid2"><div class="fg"><label>Data ecografiei</label><input type="date" id="ga-usd" max="${today()}"></div><div class="fg"><label>LCC (mm)</label><input type="number" id="ga-crl" placeholder="ex. 15" min="1" max="84"></div></div></div>
+<div class="card hidden" id="ga-con"><div class="card-title">Din data concepției</div><div class="fg"><label>Data concepției</label><input type="date" id="ga-cond" max="${today()}"></div></div>
 <button class="btn" onclick="calcGA()">Calculează</button>
-<div class="res hidden" id="ga-r"></div>`,
+<div class="res hidden" id="ga-r"></div>
+${disclaimer('Naegele (1812), modificat Hadlock (1982) pentru LCC','EDD = LMP + 280 zile (ajustat pentru lungimea ciclului); LCC: GA(zile) = 8.052×√LCC + 23.73 (Robinson & Fleming 1975)','Calculul vârstei gestaționale din LMP presupune un ciclu de 28 zile și ovulație în ziua 14.')}`,
 
+// ---- FMF T1 ----
+fmf:()=>`
+<div class="card">
+  <div class="card-title">Date generale</div>
+  <div class="grid2">
+    <div class="fg"><label>Vârstă maternă (ani)</label><input type="number" id="fmf-age" placeholder="ex. 32" min="15" max="55"></div>
+    <div class="fg"><label>Vârstă gestațională (săpt.)</label><input type="number" id="fmf-ga" placeholder="11–13+6" min="11" max="14" step="0.1"></div>
+    <div class="fg"><label>LCC (mm)</label><input type="number" id="fmf-crl" placeholder="45–84 mm" min="45" max="84" step="0.1"></div>
+    <div class="fg"><label>Greutate maternă (kg)</label><input type="number" id="fmf-wt" placeholder="ex. 68"></div>
+    <div class="fg"><label>Etnie</label><select id="fmf-eth"><option value="cauc">Caucaziană</option><option value="afro">Afro-caribeeană</option><option value="sa">Sud-asiatică</option><option value="ea">Est-asiatică</option><option value="mix">Mixtă</option></select></div>
+    <div class="fg"><label>Metodă concepție</label><select id="fmf-conc"><option value="nat">Spontană</option><option value="ivf_own">FIV – ovule proprii</option><option value="ivf_don">FIV – ovule donatoare</option></select></div>
+    <div class="fg"><label>Paritate</label><select id="fmf-par"><option value="0">Nulipară</option><option value="1">Multipară</option></select></div>
+    <div class="fg"><label>Fumat</label><select id="fmf-smk"><option value="0">Nu fumează</option><option value="1">Fumătoare</option></select></div>
+  </div>
+  <div class="fg" style="margin-top:0.5rem"><label>Antecedente trisomie 21 / anomalie cromozomială</label><select id="fmf-hx"><option value="0">Nu</option><option value="1">Da (risc adăugat)</option></select></div>
+</div>
+
+<div class="card">
+  <div class="card-title">Module – activează parametrii disponibili</div>
+
+  <div class="fmf-module">
+    <div class="fmf-module-header"><span class="fmf-module-title">📏 Translucență nucală (NT) + markeri ecografici</span><button class="fmf-toggle active" id="fmf-b-nt" onclick="toggleFMF('nt')">Ascunde</button></div>
+    <div class="fmf-fields open" id="fmf-f-nt">
+      <div class="grid2">
+        <div class="fg"><label>NT (mm)</label><input type="number" id="fmf-nt" placeholder="ex. 1.8" step="0.1" min="0.5" max="10"></div>
+        <div class="fg"><label>Os nazal</label><select id="fmf-nb"><option value="present">Prezent</option><option value="absent">Absent</option><option value="na">Neevaluat</option></select></div>
+        <div class="fg"><label>Regurgitare tricuspidiană</label><select id="fmf-tr"><option value="absent">Absentă</option><option value="present">Prezentă</option><option value="na">Neevaluată</option></select></div>
+        <div class="fg"><label>Ductus venosus (PIV)</label><select id="fmf-dv"><option value="normal">Normal (undă a pozitivă)</option><option value="abnormal">Anormal (undă a negativă/absentă)</option><option value="na">Neevaluat</option></select></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fmf-module">
+    <div class="fmf-module-header"><span class="fmf-module-title">🧪 Biochimie serică</span><button class="fmf-toggle active" id="fmf-b-bio" onclick="toggleFMF('bio')">Ascunde</button></div>
+    <div class="fmf-fields open" id="fmf-f-bio">
+      <div class="grid2">
+        <div class="fg"><label>PAPP-A (MoM)</label><input type="number" id="fmf-pappa" placeholder="ex. 1.0" step="0.01" min="0.01"><span class="hint">Introduceți direct în MoM (ajustat de laborator)</span></div>
+        <div class="fg"><label>free β-hCG (MoM)</label><input type="number" id="fmf-bhcg" placeholder="ex. 1.0" step="0.01" min="0.01"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fmf-module">
+    <div class="fmf-module-header"><span class="fmf-module-title">🩸 Doppler uterin + PlGF (preeclampsie)</span><button class="fmf-toggle" id="fmf-b-dop" onclick="toggleFMF('dop')">Activează</button></div>
+    <div class="fmf-fields" id="fmf-f-dop">
+      <div class="grid2">
+        <div class="fg"><label>PI artere uterine mediu</label><input type="number" id="fmf-utpi" placeholder="ex. 1.4" step="0.01"></div>
+        <div class="fg"><label>TA medie (mmHg)</label><input type="number" id="fmf-map" placeholder="ex. 82"></div>
+        <div class="fg"><label>PlGF (MoM)</label><input type="number" id="fmf-plgf" placeholder="ex. 1.0" step="0.01"><span class="hint">Dacă disponibil</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="btn" onclick="calcFMF()">Calculează riscul</button>
+<div class="res hidden" id="fmf-r"></div>
+${disclaimer(
+  'Nicolaides KH et al. – Fetal Medicine Foundation (FMF), Londra. <a href="https://fetalmedicine.org" target="_blank">fetalmedicine.org</a>. Ghid ISUOG 2023.',
+  'Model Bayesian: risc_final = risc_bazal(vârstă) × LR(NT MoM) × LR(PAPP-A MoM) × LR(β-hCG MoM) × LR(markeri ecografici). Riscul bazal este corectat pentru vârstă maternă, etnie, greutate, paritate, fumat, metodă de concepție și antecedente.',
+  'Calculatorul FMF integrat utilizează o aproximare a modelului probabilistic FMF. Pentru screening clinic certificat, utilizați softul oficial FMF (Astraia, ViewPoint, PRISCA) cu calibrare de laborator specifică. Valorile MoM trebuie calculate de laboratorul acreditat FMF pe baza medianelor proprii. Prag de risc crescut: ≥1:100 pentru T21, ≥1:100 pentru T18/T13 (conform FMF 2023).'
+)}`,
+
+// ---- EFW ----
 efw:()=>`
 <div class="card"><div class="card-title">Măsurători biometrice</div>
 <div class="grid2">
@@ -177,45 +230,48 @@ efw:()=>`
   <div class="fg"><label>PA (mm)</label><input type="number" id="ef-ac" placeholder="ex. 260"></div>
   <div class="fg"><label>LF (mm)</label><input type="number" id="ef-fl" placeholder="ex. 55"></div>
 </div>
-<div class="fg" style="margin-top:0.75rem"><label>Formulă</label>
-<select id="ef-form">
-  <option value="4">Hadlock 4 (DBP+PC+PA+LF) – recomandat</option>
-  <option value="3">Hadlock 3 (PC+PA+LF)</option>
-  <option value="2">Hadlock 2 (PA+LF)</option>
-</select></div></div>
+<div class="fg" style="margin-top:0.75rem"><label>Formulă</label><select id="ef-form"><option value="4">Hadlock 4 (DBP+PC+PA+LF)</option><option value="3">Hadlock 3 (PC+PA+LF)</option><option value="2">Hadlock 2 (PA+LF)</option></select></div></div>
 <button class="btn" onclick="calcEFW()">Calculează</button>
-<div class="res hidden" id="efw-r"></div>`,
+<div class="res hidden" id="efw-r"></div>
+${disclaimer('Hadlock FP et al., AJR 1985; 144:979-985','log₁₀(EFW) = 1.3596 + 0.0064×HC + 0.0424×AC + 0.174×FL + 0.00061×BPD×AC − 0.00386×AC×FL (formula cu 4 parametri)','Eroarea standard a estimatei (SEE) este ±7.5% (1 SD) și ±15% (2 SD). Acuratețea scade la extremele greutății.')}`,
 
+// ---- BISHOP ----
 bishop:()=>`
 <div class="card"><div class="card-title">Parametrii colului uterin</div>
 <div class="grid2">
-  <div class="fg"><label>Dilatație</label><select id="bs-dil"><option value="0">0 cm → 0 pct</option><option value="1">1–2 cm → 1 pct</option><option value="2">3–4 cm → 2 pct</option><option value="3">≥5 cm → 3 pct</option></select></div>
-  <div class="fg"><label>Ștergere</label><select id="bs-eff"><option value="0">0–30% → 0 pct</option><option value="1">40–50% → 1 pct</option><option value="2">60–70% → 2 pct</option><option value="3">≥80% → 3 pct</option></select></div>
-  <div class="fg"><label>Stație</label><select id="bs-sta"><option value="0">−3 → 0 pct</option><option value="1">−2 → 1 pct</option><option value="2">−1/0 → 2 pct</option><option value="3">+1/+2 → 3 pct</option></select></div>
-  <div class="fg"><label>Consistență</label><select id="bs-con"><option value="0">Fermă → 0</option><option value="1">Medie → 1</option><option value="2">Moale → 2</option></select></div>
-  <div class="fg"><label>Poziție</label><select id="bs-pos"><option value="0">Posterioară → 0</option><option value="1">Medie → 1</option><option value="2">Anterioară → 2</option></select></div>
+  <div class="fg"><label>Dilatație</label><select id="bs-dil"><option value="0">0 cm</option><option value="1">1–2 cm</option><option value="2">3–4 cm</option><option value="3">≥5 cm</option></select></div>
+  <div class="fg"><label>Ștergere</label><select id="bs-eff"><option value="0">0–30%</option><option value="1">40–50%</option><option value="2">60–70%</option><option value="3">≥80%</option></select></div>
+  <div class="fg"><label>Stație</label><select id="bs-sta"><option value="0">−3</option><option value="1">−2</option><option value="2">−1/0</option><option value="3">+1/+2</option></select></div>
+  <div class="fg"><label>Consistență</label><select id="bs-con"><option value="0">Fermă</option><option value="1">Medie</option><option value="2">Moale</option></select></div>
+  <div class="fg"><label>Poziție</label><select id="bs-pos"><option value="0">Posterioară</option><option value="1">Medie</option><option value="2">Anterioară</option></select></div>
 </div></div>
-<button class="btn" onclick="calcBishop()">Calculează scorul</button>
-<div class="res hidden" id="bs-r"></div>`,
+<button class="btn" onclick="calcBishop()">Calculează</button>
+<div class="res hidden" id="bs-r"></div>
+${disclaimer('Bishop EH, Obstet Gynecol 1964;24:266–268','Scor Bishop = suma celor 5 parametri (dilatație 0–3, ștergere 0–3, stație 0–3, consistență 0–2, poziție 0–2). Scor maxim = 13.','Scorul Bishop a fost dezvoltat pe populații specifice. Valoarea predictivă variază în funcție de paritate și metoda de inducere utilizată.')}`,
 
+// ---- BPP ----
 bpp:()=>`
-<div class="card"><div class="card-title">Parametrii BPP Manning (fiecare = 2 pct)</div>
+<div class="card"><div class="card-title">Parametrii BPP Manning</div>
 <div style="display:flex;flex-direction:column;gap:0.5rem">
   ${[['bpp-mns','Mișcări respiratorii ≥30 sec în 30 min'],['bpp-mg','Mișcări grosiere fetale (≥3 în 30 min)'],['bpp-ton','Tonus fetal (extensie/flexie activă)'],['bpp-nst','NST reactiv'],['bpp-afi','Lichid amniotic (buzunar ≥2 cm)']].map(([id,l])=>`<label class="chk-row"><input type="checkbox" id="${id}"><span style="flex:1">${l}</span><span style="font-size:12px;color:#64748b">2 pct</span></label>`).join('')}
 </div></div>
 <button class="btn" onclick="calcBPP()">Calculează</button>
-<div class="res hidden" id="bpp-r"></div>`,
+<div class="res hidden" id="bpp-r"></div>
+${disclaimer('Manning FA et al., Am J Obstet Gynecol 1980;138:788–793','Fiecare parametru = 2 puncte (prezent) sau 0 (absent). Scor total maxim = 10.','Scorul BPP are o rată fals-pozitivă de ~50% pentru suferință fetală acută. Se interpretează împreună cu contextul clinic și alte investigații Doppler.')}`,
 
+// ---- MCA-PSV ----
 mcapsv:()=>`
-<div class="card"><div class="card-title">Doppler – Artera cerebrală medie</div>
+<div class="card"><div class="card-title">Doppler MCA</div>
 <div class="grid2">
   <div class="fg"><label>Vârstă gestațională (săpt.)</label><input type="number" id="mca-ga" placeholder="ex. 32" min="18" max="40" step="0.1"></div>
   <div class="fg"><label>PSV măsurat</label><input type="number" id="mca-psv" placeholder="ex. 55.3" step="0.1"></div>
   <div class="fg"><label>Unități</label><select id="mca-unit"><option value="cms">cm/s</option><option value="ms">m/s</option></select></div>
 </div></div>
 <button class="btn" onclick="calcMCAPSV()">Calculează MoM</button>
-<div class="res hidden" id="mca-r"></div>`,
+<div class="res hidden" id="mca-r"></div>
+${disclaimer('Mari G et al., N Engl J Med 2000;342:9–14','MoM = PSV_măsurat / mediană_PSV(VG). Mediană PSV-MCA per săptămână conform tabelului Mari 2000. Prag diagnostic: >1.5 MoM pentru anemie moderată-severă.','Acuratețea metodei scade după prima transfuzie intrauterină. Măsurătoarea se efectuează la insonație de 0° față de direcția fluxului, fără compresie pe cap.')}`,
 
+// ---- CPR ----
 cpr:()=>`
 <div class="card"><div class="card-title">Indici Doppler pulsatilitate</div>
 <div class="grid2">
@@ -225,20 +281,24 @@ cpr:()=>`
   <div class="fg"><label>PI – Ductus venosus (opț.)</label><input type="number" id="cpr-dv" placeholder="ex. 0.52" step="0.01"></div>
 </div></div>
 <button class="btn" onclick="calcCPR()">Calculează CPR</button>
-<div class="res hidden" id="cpr-r"></div>`,
+<div class="res hidden" id="cpr-r"></div>
+${disclaimer('Flood K et al., Am J Obstet Gynecol 2014;211:39.e1–7; Khalil A et al., Ultrasound Obstet Gynecol 2017','CPR = PI_MCA / PI_UA. Normal >1.0 (sau >percentila 5 specifică vârstei gestaționale). Brain sparing = CPR <1.0.','CPR anormal în absența RCIU manifest este asociat cu risc crescut de rezultat perinatal advers. Nu există consens privind momentul optim al nașterii bazat exclusiv pe CPR.')}`,
 
+// ---- AFI ----
 afi:()=>`
-<div class="card"><div class="card-title">Buzunare lichid amniotic – 4 cadrane (cm)</div>
+<div class="card"><div class="card-title">4 cadrane (cm)</div>
 <div class="grid2">
-  <div class="fg"><label>Cadran sup. drept (cm)</label><input type="number" id="afi-q1" placeholder="ex. 4.5" step="0.1"></div>
-  <div class="fg"><label>Cadran sup. stâng (cm)</label><input type="number" id="afi-q2" placeholder="ex. 5.2" step="0.1"></div>
-  <div class="fg"><label>Cadran inf. drept (cm)</label><input type="number" id="afi-q3" placeholder="ex. 3.8" step="0.1"></div>
-  <div class="fg"><label>Cadran inf. stâng (cm)</label><input type="number" id="afi-q4" placeholder="ex. 4.1" step="0.1"></div>
+  <div class="fg"><label>Cadran sup. drept</label><input type="number" id="afi-q1" placeholder="ex. 4.5" step="0.1"></div>
+  <div class="fg"><label>Cadran sup. stâng</label><input type="number" id="afi-q2" placeholder="ex. 5.2" step="0.1"></div>
+  <div class="fg"><label>Cadran inf. drept</label><input type="number" id="afi-q3" placeholder="ex. 3.8" step="0.1"></div>
+  <div class="fg"><label>Cadran inf. stâng</label><input type="number" id="afi-q4" placeholder="ex. 4.1" step="0.1"></div>
 </div>
-<div class="fg" style="margin-top:0.75rem"><label>Vârstă gestațională (săpt.)</label><input type="number" id="afi-ga" placeholder="ex. 32" min="16" max="42"></div></div>
+<div class="fg" style="margin-top:0.6rem"><label>Vârstă gestațională (săpt.)</label><input type="number" id="afi-ga" placeholder="ex. 32"></div></div>
 <button class="btn" onclick="calcAFI()">Calculează</button>
-<div class="res hidden" id="afi-r"></div>`,
+<div class="res hidden" id="afi-r"></div>
+${disclaimer('Phelan JP et al., J Reprod Med 1987; Moore TR & Cayle JE, Am J Obstet Gynecol 1990','ILA = suma celor mai mari buzunare verticale din 4 cadrane uterine. Normal: 8–18 cm (termen). Oligohidramnios: <5 cm. Polihidramnios: >24 cm.','Metoda AFI are reproductibilitate moderată. Metoda buzunarului maxim (MVP) poate fi preferată pentru monitorizare serială.')}`,
 
+// ---- VBAC ----
 vbac:()=>`
 <div class="card"><div class="card-title">Date materne</div>
 <div class="grid2">
@@ -248,13 +308,15 @@ vbac:()=>`
 <div class="card"><div class="card-title">Antecedente & sarcina actuală</div>
 <div class="grid2">
   <div class="fg"><label>Naștere vaginală anterioară</label><select id="vb-vd"><option value="0">Nu</option><option value="1">Da, înainte de cezariană</option><option value="2">Da, după cezariană (VBAC)</option></select></div>
-  <div class="fg"><label>Indicația cezarianei anterioare</label><select id="vb-ind"><option value="nonrec">Non-recurentă</option><option value="rec">Recurentă (DCP, stagnare)</option></select></div>
+  <div class="fg"><label>Indicația cezarianei anterioare</label><select id="vb-ind"><option value="nonrec">Non-recurentă</option><option value="rec">Recurentă</option></select></div>
   <div class="fg"><label>Nr. cezariene anterioare</label><select id="vb-ncs"><option value="1">1</option><option value="2">2+</option></select></div>
   <div class="fg"><label>Indicație recurentă prezentă?</label><select id="vb-rec"><option value="0">Nu</option><option value="1">Da</option></select></div>
 </div></div>
 <button class="btn" onclick="calcVBAC()">Calculează</button>
-<div class="res hidden" id="vb-r"></div>`,
+<div class="res hidden" id="vb-r"></div>
+${disclaimer('Grobman WA et al., Obstet Gynecol 2007;109:806–812. Validat extern în multiple cohorte.','Model de regresie logistică: logit(p) = 3.762 − 0.067×vârstă − 0.047×IMC + corecții pentru paritate, indicație, nr. cezariene, etnie. Probabilitate = 1/(1+e^−logit).','Nomograma Grobman a fost derivată dintr-o populație americană specifică. Aplicabilitatea la alte populații poate fi limitată. Nu include date ecografice intrapartum (scor Bishop, VG).')}`,
 
+// ---- HELLP ----
 hellp:()=>`
 <div class="card"><div class="card-title">Valori de laborator</div>
 <div class="grid2">
@@ -266,8 +328,10 @@ hellp:()=>`
   <div class="fg"><label>Hemoglobină (g/dL)</label><input type="number" id="hl-hb" placeholder="ex. 9.5" step="0.1"></div>
 </div></div>
 <button class="btn" onclick="calcHELLP()">Evaluează</button>
-<div class="res hidden" id="hl-r"></div>`,
+<div class="res hidden" id="hl-r"></div>
+${disclaimer('Weinstein L, Am J Obstet Gynecol 1982; Clasificare Tennessee (Sibai) și Mississippi (Martin)','Criterii HELLP complet: hemoliză (LDH >600 U/L sau bilirubină >1.2 mg/dL sau Hb scăzută) + enzime hepatice crescute (AST/ALT >70 U/L) + trombocite <100×10³/μL.','Diagnosticul HELLP este clinic și biologic. Simptomele pot precede modificările de laborator. Repetați analizele la 6–12h dacă există suspiciune clinică.')}`,
 
+// ---- SHOCK ----
 shock:()=>`
 <div class="card"><div class="card-title">Parametrii vitali</div>
 <div class="grid2">
@@ -277,16 +341,20 @@ shock:()=>`
   <div class="fg"><label>GCS</label><input type="number" id="sh-gcs" placeholder="ex. 14" min="3" max="15"></div>
 </div></div>
 <button class="btn" onclick="calcShock()">Calculează</button>
-<div class="res hidden" id="sh-r"></div>`,
+<div class="res hidden" id="sh-r"></div>
+${disclaimer('Allgöwer M & Burri C, Dtsch Med Wschr 1967 (Shock Index); Singer M et al., JAMA 2016 (qSOFA/Sepsis-3)','Shock Index = FC / TAS. qSOFA = FR≥22 + GCS<15 + TAS≤100 (1 pct fiecare, max 3).','Shock Index și qSOFA sunt instrumente de screening, nu de diagnostic. Valorile normale în sarcină diferă față de populația generală (FC fiziologic mai mare, TAS mai mică).')}`,
 
+// ---- PPH ----
 pph:()=>`
-<div class="card"><div class="card-title">Factori de risc – bifează tot ce se aplică</div>
+<div class="card"><div class="card-title">Factori de risc</div>
 <div style="display:flex;flex-direction:column;gap:0.45rem">
   ${[['pp-ppa','Placenta praevia / jos inserată','br'],['pp-ppc','Suspiciune placenta accreta spectrum','br'],['pp-phx','Antecedente de HPP','br'],['pp-pcs','Cezariană/chirurgie uterină anterioară','bo'],['pp-mult','Sarcină multiplă','bo'],['pp-mac','Macrosomie fetală (>4000g)','bo'],['pp-poly','Polihidramnios','bo'],['pp-gmp','Grandimultipară (≥5 nașteri)','bo'],['pp-fib','Fibroame uterine','bo'],['pp-cho','Corioamniotită','bo'],['pp-mg','Sulfat de magneziu','by'],['pp-oxt','Oxitocin prelungit','by'],['pp-lng','Travaliu prelungit (>12h)','by'],['pp-anm','Anemie antepartum (Hb <10)','by']].map(([id,l,c])=>`<label class="chk-row"><input type="checkbox" id="${id}" style="accent-color:var(--acc)"><span style="flex:1;font-size:12px">${l}</span><span class="badge ${c}" style="font-size:10px">${c==='br'?'ÎNALT':c==='bo'?'MEDIU':'SCĂZUT'}</span></label>`).join('')}
 </div></div>
 <button class="btn" onclick="calcPPH()">Calculează riscul</button>
-<div class="res hidden" id="pp-r"></div>`,
+<div class="res hidden" id="pp-r"></div>
+${disclaimer('ACOG Practice Bulletin No. 183 (2017); CMQCC OB Hemorrhage Toolkit v2.0 (2015); RCOG Green-top Guideline No. 52','Stratificare în 3 niveluri pe baza factorilor de risc prezenți: risc scăzut (factori individuali izolați), mediu (2+ factori medii), înalt (orice factor înalt).','Stratificarea riscului HPP are valoare predictivă pozitivă limitată. Aproximativ 40% din HPP apar fără factori de risc identificabili antepartum.')}`,
 
+// ---- PREECLAMPSIA ----
 preeclampsia:()=>`
 <div class="card"><div class="card-title">Date clinice & biochimice</div>
 <div class="grid2">
@@ -300,8 +368,10 @@ preeclampsia:()=>`
   ${[['pe-fhx','Antecedente familiale de preeclampsie'],['pe-phx','Preeclampsie în sarcini anterioare'],['pe-dm','Diabet zaharat (tip 1 sau 2)'],['pe-htn','HTA cronică'],['pe-lupus','LES / sindrom antifosfolipidic'],['pe-mult','Sarcină multiplă'],['pe-nul','Nulipară'],['pe-ivf','Sarcină FIV']].map(([id,l])=>`<label class="chk-row"><input type="checkbox" id="${id}" style="accent-color:var(--acc)"><span style="font-size:12px">${l}</span></label>`).join('')}
 </div></div>
 <button class="btn" onclick="calcPE()">Calculează riscul</button>
-<div class="res hidden" id="pe-r"></div>`,
+<div class="res hidden" id="pe-r"></div>
+${disclaimer('Poon LC et al., Ultrasound Obstet Gynecol 2019 (FMF algorithm); ACOG Practice Bulletin No. 222 (2020)','Screening combinat T1: risc bazal (vârstă, BMI, paritate, antecedente) × LR(TA medie MoM) × LR(PI uterin MoM) × LR(PAPP-A MoM) × LR(PlGF MoM). Prag risc înalt: >1:100 pentru PE precoce (<34s).','Calculatorul prezent utilizează o aproximare a modelului FMF. Screening-ul complet FMF pentru preeclampsie necesită softul certificat și calibrare specifică laboratorului (Astraia/ViewPoint). Aspirina 150 mg/zi recomandată în risc înalt conform ASPRE trial.')}`,
 
+// ---- MGSO4 ----
 mgso4:()=>`
 <div class="card"><div class="card-title">Date pacientă</div>
 <div class="grid2">
@@ -311,8 +381,10 @@ mgso4:()=>`
   <div class="fg"><label>Diureză (mL/h)</label><input type="number" id="mg-uo" placeholder="ex. 30"></div>
 </div></div>
 <button class="btn" onclick="calcMgSO4()">Calculează doza</button>
-<div class="res hidden" id="mg-r"></div>`,
+<div class="res hidden" id="mg-r"></div>
+${disclaimer('WHO Recommendations for Prevention and Treatment of Pre-eclampsia and Eclampsia (2011); Crowther CA et al. (Magpie Trial); Doyle LW et al., Cochrane 2009 (neuroprotecție)','Doză de atac: 4–6 g i.v. în 15–30 min. Întreținere: 1–2 g/h. Toxicitate: pierdere reflexe patelate la 3.5–5 mEq/L, stop respirator la 5–7 mEq/L, stop cardiac la >15 mEq/L. Antidot: Gluconat de Ca 1g i.v. lent.','Dozele trebuie ajustate în insuficiența renală. Monitorizarea continuă a reflexelor, FR și diurezei este obligatorie. Nu se administrează fără supraveghere medicală strictă.')}`,
 
+// ---- CS RISK ----
 csrisk:()=>`
 <div class="card"><div class="card-title">Date clinice</div>
 <div class="grid2">
@@ -327,8 +399,10 @@ csrisk:()=>`
   ${[['cs-dm','Diabet gestațional'],['cs-htn','HTA / preeclampsie'],['cs-prev','Cezariană anterioară'],['cs-pos','Prezentație anormală / distocie']].map(([id,l])=>`<label class="chk-row"><input type="checkbox" id="${id}" style="accent-color:var(--acc)"><span style="font-size:12px">${l}</span></label>`).join('')}
 </div></div>
 <button class="btn" onclick="calcCS()">Calculează riscul</button>
-<div class="res hidden" id="cs-r"></div>`,
+<div class="res hidden" id="cs-r"></div>
+${disclaimer('Flamm BL & Geiger AM, Obstet Gynecol 1997; Grobman WA et al., 2007; date RCOG','Model de scoring clinic bazat pe factori de risc cunoscuți pentru cezariană în travaliu. Nu există un model universal validat.','Acest calculator reprezintă o estimare orientativă pe baza factorilor de risc. Nu este un instrument validat prospectiv pentru predicția cezarianei în travaliu.')}`,
 
+// ---- TWIN ----
 twin:()=>`
 <div class="card"><div class="card-title">Tip sarcină gemelară</div>
 <div class="grid2">
@@ -338,21 +412,23 @@ twin:()=>`
   <div class="fg"><label>EFW – Fătul B (g)</label><input type="number" id="tw-efwb" placeholder="ex. 1400"></div>
 </div></div>
 <button class="btn" onclick="calcTwin()">Calculează</button>
-<div class="res hidden" id="tw-r"></div>`,
+<div class="res hidden" id="tw-r"></div>
+${disclaimer('ISUOG Practice Guidelines: twin pregnancy (2016); RCOG Green-top Guideline No. 51 (2016); Quintero RM et al. (clasificare TTTS)','Discordanță EFW (%) = (EFW_mare − EFW_mic) / EFW_mare × 100. Prag semnificativ: ≥20–25% (variază în funcție de ghid).','Momentele optime de naștere sunt orientative și se adaptează în funcție de evoluția clinică, maturitate pulmonară și preferința pacientei. Sarcina MCMA necesită monitorizare specializată.')}`,
 
+// ---- GYN ----
 rmi:()=>`
 <div class="card"><div class="card-title">Date pacientă</div>
 <div class="grid2">
   <div class="fg"><label>CA-125 (U/mL)</label><input type="number" id="rm-ca125" placeholder="ex. 65"></div>
   <div class="fg"><label>Status menopauză</label><select id="rm-meno"><option value="1">Premenopauză (M=1)</option><option value="3">Postmenopauză (M=3)</option></select></div>
 </div>
-<hr class="divider">
-<div class="card-title">Scor ecografic (U)</div>
+<hr class="divider"><div class="card-title">Scor ecografic (U)</div>
 <div style="display:flex;flex-direction:column;gap:0.45rem">
   ${[['rm-u1','Tumoare multichistică'],['rm-u2','Leziune solidă'],['rm-u3','Metastaze'],['rm-u4','Ascită'],['rm-u5','Neregularitate bilaterală']].map(([id,l])=>`<label class="chk-row"><input type="checkbox" id="${id}" style="accent-color:var(--acc)"><span style="font-size:12px">${l}</span></label>`).join('')}
 </div></div>
 <button class="btn" onclick="calcRMI()">Calculează RMI</button>
-<div class="res hidden" id="rm-r"></div>`,
+<div class="res hidden" id="rm-r"></div>
+${disclaimer('Jacobs I et al., BMJ 1990;301:268–271 (RMI I); Tingulstad S et al., Br J Obstet Gynaecol 1996 (RMI II)','RMI = U × M × CA-125. U: 0 (niciun criteriu eco), 1 (un criteriu), 3 (≥2 criterii). M: 1 (premenopauză), 3 (postmenopauză). Prag risc înalt: RMI ≥200–250.','Sensibilitate RMI ~70–75% pentru cancer ovarian avansat. Nu detectează fiabil cancerele borderline sau stadiile precoce. Se completează cu examen clinic, CT și discuție multidisciplinară.')}`,
 
 roma:()=>`
 <div class="card"><div class="card-title">Markeri tumorali</div>
@@ -362,7 +438,8 @@ roma:()=>`
   <div class="fg"><label>Status menopauză</label><select id="ro-meno"><option value="pre">Premenopauză</option><option value="post">Postmenopauză</option></select></div>
 </div></div>
 <button class="btn" onclick="calcROMA()">Calculează ROMA</button>
-<div class="res hidden" id="ro-r"></div>`,
+<div class="res hidden" id="ro-r"></div>
+${disclaimer('Moore RG et al., Gynecol Oncol 2009;112:40–46. Aprobat FDA 2011.','Pre: PI = −12.0 + 2.38×ln(HE4) + 0.0626×ln(CA125). Post: PI = −8.09 + 1.04×ln(HE4) + 0.732×ln(CA125). ROMA(%) = e^PI/(1+e^PI)×100. Praguri: premenopauză ≥11.4%, postmenopauză ≥29.9%.','HE4 poate fi fals crescut în insuficiența renală și afecțiuni pulmonare benigne. ROMA nu diferențiază între tipurile histologice de cancer ovarian.')}`,
 
 bmi:()=>`
 <div class="card"><div class="card-title">Parametrii fizici</div>
@@ -372,21 +449,17 @@ bmi:()=>`
   <div class="fg"><label>Vârstă (ani)</label><input type="number" id="bm-age" placeholder="ex. 35"></div>
 </div></div>
 <button class="btn" onclick="calcBMI()">Calculează</button>
-<div class="res hidden" id="bm-r"></div>`,
+<div class="res hidden" id="bm-r"></div>
+${disclaimer('WHO Expert Consultation, Lancet 2004 (IMC); Mosteller RD, N Engl J Med 1987 (BSA)','IMC = greutate(kg) / înălțime²(m). BSA (Mosteller) = √[greutate(kg) × înălțime(cm) / 3600]. Greutate ideală = 22.5 × înălțime²(m).','Clasificarea IMC OMS a fost derivată din populații europene. Pragurile pot diferi la alte etnii (ex. Asia: supraponderal ≥23, obezitate ≥27.5).')}`,
 
 menopause:()=>`
 <div class="card"><div class="card-title">MRS – 0=absent · 1=ușor · 2=moderat · 3=sever · 4=f.sever</div>
 <div style="display:flex;flex-direction:column;gap:0.5rem">
-  ${[['mr-hf','Bufeuri / transpirații nocturne'],['mr-hrt','Palpitații / disconfort cardiac'],['mr-slp','Tulburări de somn'],['mr-dep','Depresie / irascibilitate'],['mr-anx','Anxietate / nervozitate'],['mr-cog','Dificultăți cognitive / memorie'],['mr-sex','Probleme sexuale (libido, uscăciune)'],['mr-uri','Simptome urinare'],['mr-art','Dureri articulare / musculare'],['mr-vag','Uscăciune vaginală / dispareunie']].map(([id,l])=>`
-  <div style="display:flex;align-items:center;gap:8px">
-    <span style="flex:1;font-size:13px;color:#475569">${l}</span>
-    <select id="${id}" style="width:130px;padding:5px 8px;border:1.5px solid #e2e8f0;border-radius:7px;font-size:12px;background:#f8fafc">
-      <option value="0">0 – absent</option><option value="1">1 – ușor</option><option value="2">2 – moderat</option><option value="3">3 – sever</option><option value="4">4 – f. sever</option>
-    </select>
-  </div>`).join('')}
+  ${[['mr-hf','Bufeuri / transpirații nocturne'],['mr-hrt','Palpitații / disconfort cardiac'],['mr-slp','Tulburări de somn'],['mr-dep','Depresie / irascibilitate'],['mr-anx','Anxietate / nervozitate'],['mr-cog','Dificultăți cognitive / memorie'],['mr-sex','Probleme sexuale (libido, uscăciune)'],['mr-uri','Simptome urinare'],['mr-art','Dureri articulare / musculare'],['mr-vag','Uscăciune vaginală / dispareunie']].map(([id,l])=>`<div style="display:flex;align-items:center;gap:8px"><span style="flex:1;font-size:13px;color:#475569">${l}</span><select id="${id}" style="width:130px;padding:5px 8px;border:1.5px solid #e2e8f0;border-radius:7px;font-size:12px;background:#f8fafc"><option value="0">0 – absent</option><option value="1">1 – ușor</option><option value="2">2 – moderat</option><option value="3">3 – sever</option><option value="4">4 – f. sever</option></select></div>`).join('')}
 </div></div>
-<button class="btn" onclick="calcMRS()">Calculează scorul MRS</button>
-<div class="res hidden" id="mr-r"></div>`,
+<button class="btn" onclick="calcMRS()">Calculează MRS</button>
+<div class="res hidden" id="mr-r"></div>
+${disclaimer('Heinemann LAJ et al., Health Qual Life Outcomes 2004;2:45. Validat în >20 limbi.','Scor MRS = suma celor 10 itemi (0–4 fiecare). Domenii: somato-vegetativ (itemi 1–3), psihologic (4–6), urogenital (7–10). Scor maxim = 40.','MRS este un instrument de auto-evaluare a simptomelor, nu de diagnostic. Nu înlocuiește evaluarea clinică și indicațiile pentru terapia hormonală de substituție.')}`,
 
 endoca:()=>`
 <div class="card"><div class="card-title">Date clinice</div>
@@ -396,10 +469,11 @@ endoca:()=>`
 </div>
 <hr class="divider">
 <div style="display:flex;flex-direction:column;gap:0.45rem">
-  ${[['ec-dm','Diabet zaharat tip 2'],['ec-htn','Hipertensiune arterială'],['ec-nullip','Nullipară'],['ec-meno','Menopauză tardivă (>55 ani)'],['ec-meno2','Menarhă precoce (<12 ani)'],['ec-pcos','SOP'],['ec-tam','Tamoxifen'],['ec-lynch','Sindrom Lynch / istoric familial'],['ec-hrt','Estrogeni fără progesteron'],['ec-bleed','Sângerare postmenopauză']].map(([id,l])=>`<label class="chk-row"><input type="checkbox" id="${id}" style="accent-color:var(--acc)"><span style="font-size:12px">${l}</span></label>`).join('')}
+  ${[['ec-dm','Diabet zaharat tip 2'],['ec-htn','Hipertensiune arterială'],['ec-nullip','Nullipară'],['ec-meno','Menopauză tardivă (>55 ani)'],['ec-meno2','Menarhă precoce (<12 ani)'],['ec-pcos','SOP'],['ec-tam','Tamoxifen'],['ec-lynch','Sindrom Lynch / HNPCC'],['ec-hrt','Estrogeni fără progesteron'],['ec-bleed','Sângerare postmenopauză']].map(([id,l])=>`<label class="chk-row"><input type="checkbox" id="${id}" style="accent-color:var(--acc)"><span style="font-size:12px">${l}</span></label>`).join('')}
 </div></div>
 <button class="btn" onclick="calcEndoCa()">Evaluează riscul</button>
-<div class="res hidden" id="ec-r"></div>`,
+<div class="res hidden" id="ec-r"></div>
+${disclaimer('ACOG Practice Bulletin No. 149 (2015); SGO Clinical Practice Statement (2014); Lynch HT et al. (Sindrom Lynch)','Model de stratificare pe baza factorilor de risc cunoscuți pentru cancerul endometrial (tip I estrogen-dependent). Nu există un model de scoring validat universal.','Sângerarea postmenopauză necesită investigare promptă indiferent de scorul de risc calculat (biopsie endometru ± histeroscopie). Calculatorul nu se aplică cancerului endometrial tip II (seros, cu celule clare).')}`,
 
 ovres:()=>`
 <div class="card"><div class="card-title">Markeri rezervă ovariană</div>
@@ -407,40 +481,43 @@ ovres:()=>`
   <div class="fg"><label>AMH (ng/mL)</label><input type="number" id="ov-amh" placeholder="ex. 1.5" step="0.01"></div>
   <div class="fg"><label>FSH ziua 2-3 (mUI/mL)</label><input type="number" id="ov-fsh" placeholder="ex. 8" step="0.1"></div>
   <div class="fg"><label>Estradiol ziua 2-3 (pg/mL)</label><input type="number" id="ov-e2" placeholder="ex. 40" step="0.1"></div>
-  <div class="fg"><label>AFC – foliculi antrali (total)</label><input type="number" id="ov-afc" placeholder="ex. 12"></div>
+  <div class="fg"><label>AFC total (foliculi antrali)</label><input type="number" id="ov-afc" placeholder="ex. 12"></div>
   <div class="fg"><label>Vârstă (ani)</label><input type="number" id="ov-age" placeholder="ex. 35"></div>
 </div></div>
 <button class="btn" onclick="calcOvRes()">Interpretează</button>
-<div class="res hidden" id="ov-r"></div>`,
+<div class="res hidden" id="ov-r"></div>
+${disclaimer('Broer SL et al., Fertil Steril 2011 (AMH/AFC); La Marca A et al., Hum Reprod Update 2009 (AMH); ESHRE guidelines 2019','AMH: produs de celulele granuloasei foliculilor antrali, stabil în ciclul menstrual. AFC: sumă foliculi 2–10 mm ambari ovare la ecografie transvaginală în faza foliculară precoce.','Valorile de referință pentru AMH variază semnificativ între kituri de dozare (Elecsys, AMH Gen II, picoAMH). Rezerva ovariană scăzută nu echivalează cu infertilitate, ci cu răspuns slab la stimulare ovariană.')}`,
 
 rasrm:()=>`
-<div class="card"><div class="card-title">Peritoneu & ovar</div>
+<div class="card"><div class="card-title">Parametrii rASRM</div>
 <div class="grid2">
-  <div class="fg"><label>Endometrioză superficială</label><select id="ra-ps"><option value="0">Absent</option><option value="1">&lt;1 cm → 1</option><option value="2">1–3 cm → 2</option><option value="4">&gt;3 cm → 4</option></select></div>
-  <div class="fg"><label>Endometrioză profundă</label><select id="ra-pd"><option value="0">Absent</option><option value="2">&lt;1 cm → 2</option><option value="4">1–3 cm → 4</option><option value="6">&gt;3 cm → 6</option></select></div>
-  <div class="fg"><label>Chist endometrial drept</label><select id="ra-osr"><option value="0">Absent</option><option value="1">&lt;1 cm → 1</option><option value="4">1–3 cm → 4</option><option value="20">&gt;3 cm → 20</option></select></div>
-  <div class="fg"><label>Chist endometrial stâng</label><select id="ra-osl"><option value="0">Absent</option><option value="1">&lt;1 cm → 1</option><option value="4">1–3 cm → 4</option><option value="20">&gt;3 cm → 20</option></select></div>
-  <div class="fg"><label>Aderențe ovar drept</label><select id="ra-oadr"><option value="0">Absent</option><option value="1">Filamentare &lt;1/3</option><option value="2">Filamentare &gt;1/3</option><option value="4">Dense &lt;1/3</option><option value="8">Dense &gt;1/3</option><option value="16">Dense + incluse</option></select></div>
-  <div class="fg"><label>Aderențe ovar stâng</label><select id="ra-oadl"><option value="0">Absent</option><option value="1">Filamentare &lt;1/3</option><option value="2">Filamentare &gt;1/3</option><option value="4">Dense &lt;1/3</option><option value="8">Dense &gt;1/3</option><option value="16">Dense + incluse</option></select></div>
+  <div class="fg"><label>Endometrioză peritoneală superficială</label><select id="ra-ps"><option value="0">Absent</option><option value="1">&lt;1 cm → 1 pct</option><option value="2">1–3 cm → 2 pct</option><option value="4">&gt;3 cm → 4 pct</option></select></div>
+  <div class="fg"><label>Endometrioză peritoneală profundă</label><select id="ra-pd"><option value="0">Absent</option><option value="2">&lt;1 cm → 2 pct</option><option value="4">1–3 cm → 4 pct</option><option value="6">&gt;3 cm → 6 pct</option></select></div>
+  <div class="fg"><label>Chist endometrial ovar drept</label><select id="ra-osr"><option value="0">Absent</option><option value="1">&lt;1 cm → 1 pct</option><option value="4">1–3 cm → 4 pct</option><option value="20">&gt;3 cm → 20 pct</option></select></div>
+  <div class="fg"><label>Chist endometrial ovar stâng</label><select id="ra-osl"><option value="0">Absent</option><option value="1">&lt;1 cm → 1 pct</option><option value="4">1–3 cm → 4 pct</option><option value="20">&gt;3 cm → 20 pct</option></select></div>
+  <div class="fg"><label>Aderențe ovar drept</label><select id="ra-oadr"><option value="0">Absent</option><option value="1">Filamentare &lt;1/3</option><option value="2">Filamentare &gt;1/3</option><option value="4">Dense &lt;1/3</option><option value="8">Dense &gt;1/3</option><option value="16">Dense+incluse</option></select></div>
+  <div class="fg"><label>Aderențe ovar stâng</label><select id="ra-oadl"><option value="0">Absent</option><option value="1">Filamentare &lt;1/3</option><option value="2">Filamentare &gt;1/3</option><option value="4">Dense &lt;1/3</option><option value="8">Dense &gt;1/3</option><option value="16">Dense+incluse</option></select></div>
   <div class="fg"><label>Aderențe trompă dreaptă</label><select id="ra-fdr"><option value="0">Absent</option><option value="1">Filamentare &lt;1/3</option><option value="2">Filamentare &gt;1/3</option><option value="4">Dense &lt;1/3</option><option value="8">Dense &gt;1/3</option><option value="16">Ocluzie</option></select></div>
   <div class="fg"><label>Aderențe trompă stângă</label><select id="ra-fdl"><option value="0">Absent</option><option value="1">Filamentare &lt;1/3</option><option value="2">Filamentare &gt;1/3</option><option value="4">Dense &lt;1/3</option><option value="8">Dense &gt;1/3</option><option value="16">Ocluzie</option></select></div>
-  <div class="fg"><label>Obliterare Douglas</label><select id="ra-pod"><option value="0">Absent</option><option value="4">Parțial → 4</option><option value="40">Total → 40</option></select></div>
+  <div class="fg"><label>Obliterare Douglas</label><select id="ra-pod"><option value="0">Absent</option><option value="4">Parțial → 4 pct</option><option value="40">Total → 40 pct</option></select></div>
 </div></div>
 <button class="btn" onclick="calcRASRM()">Calculează rASRM</button>
-<div class="res hidden" id="ra-r"></div>`,
+<div class="res hidden" id="ra-r"></div>
+${disclaimer('American Society for Reproductive Medicine (ASRM), Fertil Steril 1997;67:817–821 (clasificare revizuită)','Scor rASRM = suma tuturor componentelor. Stadii: I (1–5 pct), II (6–15 pct), III (16–40 pct), IV (>40 pct).','Scorul rASRM corelează slab cu intensitatea durerii și cu fertilitatea. Clasificarea Enzian/DIE este mai relevantă pentru endometrioza profundă. Clasificarea se realizează intraoperator (laparoscopie).')}`,
 
 enzian:()=>`
 <div class="card"><div class="card-title">Compartimente DIE</div>
 <div class="grid2">
-  <div class="fg"><label>Compartiment A – Rectovaginal</label><select id="ez-a"><option value="0">0 – absent</option><option value="1">1 – ≤1 cm</option><option value="2">2 – 1–3 cm</option><option value="3">3 – &gt;3 cm</option></select></div>
-  <div class="fg"><label>Compartiment B – Uterosacrate</label><select id="ez-b"><option value="0">0 – absent</option><option value="1">1 – ≤1 cm</option><option value="2">2 – 1–3 cm</option><option value="3">3 – &gt;3 cm</option></select></div>
-  <div class="fg"><label>Compartiment C – Rect/sigmoid</label><select id="ez-c"><option value="0">0 – absent</option><option value="1">1 – ≤1 cm</option><option value="2">2 – 1–3 cm</option><option value="3">3 – &gt;3 cm</option></select></div>
+  <div class="fg"><label>Compartiment A – Rectovaginal/Vagin</label><select id="ez-a"><option value="0">0 – absent</option><option value="1">1 – ≤1 cm</option><option value="2">2 – 1–3 cm</option><option value="3">3 – &gt;3 cm</option></select></div>
+  <div class="fg"><label>Compartiment B – Uterosacrate/Perete</label><select id="ez-b"><option value="0">0 – absent</option><option value="1">1 – ≤1 cm</option><option value="2">2 – 1–3 cm</option><option value="3">3 – &gt;3 cm</option></select></div>
+  <div class="fg"><label>Compartiment C – Rect/Sigmoid</label><select id="ez-c"><option value="0">0 – absent</option><option value="1">1 – ≤1 cm</option><option value="2">2 – 1–3 cm</option><option value="3">3 – &gt;3 cm</option></select></div>
   <div class="fg"><label>Compartiment F – Alte regiuni</label><select id="ez-f"><option value="0">0 – absent</option><option value="1">1 – ≤1 cm</option><option value="2">2 – 1–3 cm</option><option value="3">3 – &gt;3 cm</option></select></div>
   <div class="fg"><label>Endometriom ovarian</label><select id="ez-oma"><option value="none">Absent</option><option value="right">Drept</option><option value="left">Stâng</option><option value="bilateral">Bilateral</option></select></div>
   <div class="fg"><label>Aderențe</label><select id="ez-adh"><option value="0">Absent</option><option value="1">Filamentare</option><option value="2">Dense</option><option value="3">Severe/obliterante</option></select></div>
 </div></div>
 <button class="btn" onclick="calcEnzian()">Generează scorul</button>
-<div class="res hidden" id="ez-r"></div>`,
+<div class="res hidden" id="ez-r"></div>
+${disclaimer('Tuttlies F et al., Gynecol Obstet 2005 (Enzian original); Haas D et al., Fertil Steril 2013 (clasificare revizuită #Enzian)','Clasificare alfanumerică: A(0–3) B(0–3) C(0–3) F(0–3) + endometriom ± aderențe. Grad 0=absent, 1=≤1cm, 2=1–3cm, 3=>3cm.','Clasificarea Enzian este complementară rASRM și se aplică exclusiv endometriozei profunde (DIE). Se realizează prin corelarea datelor ecografice (expert), IRM și/sau intraoperator.')}`,
 
 pbac:()=>`
 <div class="card"><div class="card-title">Scor PBAC – per ciclu menstrual</div>
@@ -452,236 +529,161 @@ pbac:()=>`
   <div class="fg"><label>Pete (nr. absorbante)</label><input type="number" id="pb-spot" placeholder="ex. 4" min="0"></div>
 </div></div>
 <button class="btn" onclick="calcPBAC()">Calculează</button>
-<div class="res hidden" id="pb-r"></div>`,
+<div class="res hidden" id="pb-r"></div>
+${disclaimer('Higham JM et al., Br J Obstet Gynaecol 1990;97:734–739','PBAC = (absorbante×1) + (tampoane×1) + (cheaguri mici×1) + (cheaguri mari×5) + (pete×0.5). Prag menoragie: PBAC ≥100 per ciclu (corespunde aproximativ la pierderi >80 mL).','PBAC are corelație moderată cu pierderile menstruale măsurate obiectiv (metoda alcalinei hematinei). Este dependent de tipul de produs menstrual utilizat și de percepția subiectivă a pacientei.')}`,
 
 ecog:()=>`
 <div class="card"><div class="card-title">Status performanță ECOG</div>
 <div style="display:flex;flex-direction:column;gap:0.5rem">
-  ${[[0,'Activitate normală, fără restricții'],[1,'Simptome ușoare, muncă ușoară posibilă'],[2,'Ambulatorie >50% din timp, nu poate munci'],[3,'Mică capacitate de autoîngrijire, >50% în pat'],[4,'Complet dependentă, nicio autoîngrijire'],[5,'Decesul pacientei']].map(([v,d])=>`
-  <label style="display:flex;align-items:flex-start;gap:10px;font-size:13px;cursor:pointer;padding:9px 11px;border-radius:9px;border:1.5px solid #e2e8f0;background:#f8fafc">
-    <input type="radio" name="ecog" value="${v}" style="margin-top:2px;accent-color:var(--acc)">
-    <span><strong style="color:#1e293b">ECOG ${v}</strong> — ${d}</span>
-  </label>`).join('')}
+  ${[[0,'Activitate normală, fără restricții'],[1,'Simptome ușoare, muncă ușoară posibilă'],[2,'Ambulatorie >50% din timp, nu poate munci'],[3,'Îngrijire limitată – >50% din timp în pat'],[4,'Complet dependentă, nicio autoîngrijire'],[5,'Decedat']].map(([v,d])=>`<label style="display:flex;align-items:flex-start;gap:10px;font-size:13px;cursor:pointer;padding:9px 11px;border-radius:9px;border:1.5px solid #e2e8f0;background:#f8fafc"><input type="radio" name="ecog" value="${v}" style="margin-top:2px;accent-color:var(--acc)"><span><strong style="color:#1e293b">ECOG ${v}</strong> — ${d}</span></label>`).join('')}
 </div></div>
 <button class="btn" onclick="calcECOG()">Evaluează</button>
-<div class="res hidden" id="eg-r"></div>`,
+<div class="res hidden" id="eg-r"></div>
+${disclaimer('Oken MM et al., Am J Clin Oncol 1982;5:649–655 (ECOG); Karnofsky DA et al., Cancer 1948','Scala ECOG: 0–5 (5=deces). Corelație cu scala Karnofsky: ECOG 0=100%, 1=70–80%, 2=50–60%, 3=30–40%, 4=10–20%.','Statusul ECOG este evaluat de clinician, nu de pacientă. Are variabilitate inter-observator moderată. Este unul dintre principalii predictori ai toleranței la chimioterapie și supraviețuirii în oncologie.')}`,
 };
 
-// ============ CALCULE ============
-function gaMeth(){
-  const m=document.getElementById('ga-m').value;
-  document.getElementById('ga-lmp').classList.toggle('hidden',m!=='lmp');
-  document.getElementById('ga-us').classList.toggle('hidden',m!=='us');
-  document.getElementById('ga-con').classList.toggle('hidden',m!=='con');
-}
-function calcGA(){
-  const m=document.getElementById('ga-m').value;
-  let edd,gaW,gaD,now=new Date();now.setHours(0,0,0,0);
-  if(m==='lmp'){const v=document.getElementById('ga-lmpd').value;if(!v)return alert('Introduceți data LMP.');const lmp=new Date(v),cyc=parseInt(document.getElementById('ga-cyc').value)||28;edd=new Date(lmp);edd.setDate(lmp.getDate()+280+(cyc-28));const d=Math.floor((now-lmp)/864e5);gaW=Math.floor(d/7);gaD=d%7;}
-  else if(m==='us'){const ud=document.getElementById('ga-usd').value,crl=parseFloat(document.getElementById('ga-crl').value);if(!ud||isNaN(crl))return alert('Introduceți data ecografiei și LCC.');const gaAtUs=Math.round(8.052*Math.pow(crl,0.5)+23.73);const uDate=new Date(ud);edd=new Date(uDate);edd.setDate(uDate.getDate()+(280-gaAtUs));const tot=gaAtUs+Math.floor((now-uDate)/864e5);gaW=Math.floor(tot/7);gaD=tot%7;}
-  else{const cd=document.getElementById('ga-cond').value;if(!cd)return alert('Introduceți data concepției.');const c=new Date(cd);edd=new Date(c);edd.setDate(c.getDate()+266);const tot=Math.floor((now-c)/864e5)+14;gaW=Math.floor(tot/7);gaD=tot%7;}
-  const trim=gaW<14?'Trimestrul I':gaW<28?'Trimestrul II':'Trimestrul III';
-  const zile=Math.max(0,Math.floor((edd-now)/864e5));
-  showRes('ga-r',`<div class="res-lbl">Data probabilă a nașterii</div><div class="res-main">${fmt(edd)}</div><div class="res-grid"><div class="res-item"><div class="res-val">${gaW}s ${gaD}z</div><div class="res-lbl2">Vârstă gestațională</div></div><div class="res-item"><div class="res-val">${zile}</div><div class="res-lbl2">Zile rămase</div></div><div class="res-item"><div class="res-val">${trim}</div><div class="res-lbl2">Trimestru</div></div></div>`);
-}
-function calcEFW(){
-  const f=document.getElementById('ef-form').value;
-  const bpd=parseFloat(document.getElementById('ef-bpd').value)/10,hc=parseFloat(document.getElementById('ef-hc').value)/10,ac=parseFloat(document.getElementById('ef-ac').value)/10,fl=parseFloat(document.getElementById('ef-fl').value)/10;
-  let log;
-  if(f==='4'){if([bpd,hc,ac,fl].some(isNaN))return alert('Completați toate 4 măsurătorile.');log=1.3596+0.0064*hc+0.0424*ac+0.174*fl+0.00061*bpd*ac-0.00386*ac*fl;}
-  else if(f==='3'){if([hc,ac,fl].some(isNaN))return alert('Completați PC, PA și LF.');log=1.326-0.00326*ac*fl+0.0107*hc+0.0438*ac+0.158*fl;}
-  else{if([ac,fl].some(isNaN))return alert('Completați PA și LF.');log=1.304+0.05281*ac+0.1938*fl-0.004*ac*fl;}
-  const efw=Math.round(Math.pow(10,log)),lbs=(efw/453.592).toFixed(1);
-  const[s,c]=efw<2500?['<10 percentilă – posibil RCF','br']:efw<=4000?['Greutate normală','bg']:['Macrosomie suspectată','bo'];
-  showRes('efw-r',`<div class="res-lbl">Greutate fetală estimată</div><div class="res-main">${efw.toLocaleString('ro-RO')} g | ${lbs} lbs</div><span class="badge ${c}">${s}</span><div class="res-note" style="margin-top:8px;font-size:12px;color:#94a3b8">±1 DS ≈ ±15% din EFW.</div>`);
-}
-function calcBishop(){
-  const sc=['bs-dil','bs-eff','bs-sta','bs-con','bs-pos'].reduce((a,id)=>a+parseInt(document.getElementById(id).value),0);
-  const[interp,cls]=sc<=5?['Col nefavorabil – maturare cervicală recomandată','br']:sc<=7?['Intermediar – posibil necesară maturare','by']:['Col favorabil – inducere cu șanse bune de succes','bg'];
-  showRes('bs-r',`<div class="res-lbl">Scor Bishop</div><div class="res-main">${sc} / 13</div><span class="badge ${cls}">${sc<=5?'Nefavorabil':sc<=7?'Intermediar':'Favorabil'}</span><div class="res-note" style="margin-top:8px">${interp}</div>`);
-}
-function calcBPP(){
-  const sc=['bpp-mns','bpp-mg','bpp-ton','bpp-nst','bpp-afi'].reduce((a,id)=>a+(document.getElementById(id).checked?2:0),0);
-  const[interp,cls]=sc===10?['Normal – supraveghere de rutină','bg']:sc>=8?['Normal – repetați săptămânal','bg']:sc>=6?['Echivoc – repetați în 24h','by']:sc>=4?['Anormal – evaluare urgentă','bo']:['Critic – naștere indicată','br'];
-  showRes('bpp-r',`<div class="res-lbl">Scor BPP Manning</div><div class="res-main">${sc} / 10</div><span class="badge ${cls}">${sc>=8?'Normal':sc>=6?'Echivoc':sc>=4?'Anormal':'Critic'}</span><div class="res-note" style="margin-top:8px">${interp}</div>`);
-}
-function calcMCAPSV(){
-  let psv=parseFloat(document.getElementById('mca-psv').value);
-  const ga=parseFloat(document.getElementById('mca-ga').value);
-  if(isNaN(psv)||isNaN(ga))return alert('Introduceți vârsta gestațională și PSV.');
-  if(document.getElementById('mca-unit').value==='ms')psv*=100;
-  const med={18:23.2,19:24.3,20:25.5,21:26.8,22:28.1,23:29.5,24:31.0,25:32.6,26:34.2,27:35.9,28:37.7,29:39.6,30:41.6,31:43.7,32:45.9,33:48.2,34:50.6,35:53.1,36:55.8,37:58.6,38:61.6,39:64.7,40:67.9};
-  const gaR=Math.round(ga),mediana=med[gaR];
-  if(!mediana)return alert('VG trebuie să fie între 18–40 săptămâni.');
-  const mom=(psv/mediana).toFixed(2),prag=(mediana*1.5).toFixed(1);
-  const[cls,level,rec]=parseFloat(mom)<1.0?['bg','Normal (< 1.0 MoM)','Repetați Doppler MCA la intervalul stabilit.']:parseFloat(mom)<1.5?['by','Intermediar (1.0–1.49 MoM)','Repetați PSV-MCA la 1–2 săptămâni.']:parseFloat(mom)<1.55?['bo','Limită critică (1.5–1.55 MoM)','Consultare maternofetală urgentă. Discutați cordocenteza.']:['br','Anemie severă probabilă (>1.55 MoM)','Internare urgentă. Cordocenteză ± transfuzie intrauterină.'];
-  showRes('mca-r',`<div class="res-lbl">MCA-PSV – Anemie fetală</div><div class="res-grid"><div class="res-item"><div class="res-val">${psv.toFixed(1)} cm/s</div><div class="res-lbl2">PSV măsurat</div></div><div class="res-item"><div class="res-val">${mediana} cm/s</div><div class="res-lbl2">Mediană ${gaR}s</div></div><div class="res-item"><div class="res-val">${mom} MoM</div><div class="res-lbl2">Multiplu mediană</div></div><div class="res-item"><div class="res-val">${prag} cm/s</div><div class="res-lbl2">Prag 1.5 MoM</div></div></div><span class="badge ${cls}" style="margin-top:8px">${level}</span><div class="res-note" style="margin-top:8px"><strong>Recomandare:</strong> ${rec}</div><div class="res-note" style="margin-top:4px;font-size:12px;color:#94a3b8">Mari G. et al., NEJM 2000.</div>`);
-}
-function calcCPR(){
-  const mca=parseFloat(document.getElementById('cpr-mca').value),ua=parseFloat(document.getElementById('cpr-ua').value),ga=parseFloat(document.getElementById('cpr-ga').value),dv=parseFloat(document.getElementById('cpr-dv').value);
-  if(isNaN(mca)||isNaN(ua))return alert('Introduceți PI MCA și PI arteră ombilicală.');
-  const cpr=(mca/ua).toFixed(2);
-  const p5tab={24:1.05,25:1.06,26:1.07,27:1.08,28:1.09,29:1.10,30:1.08,31:1.07,32:1.06,33:1.05,34:1.04,35:1.02,36:1.00,37:0.98,38:0.96,39:0.94,40:0.92};
-  const gaR=Math.round(ga)||34,p5=p5tab[gaR]||1.0;
-  const[cls,level]=parseFloat(cpr)>=1.08?['bg','CPR normal']:parseFloat(cpr)>=1.0?['by','CPR la limita inferioară']:parseFloat(cpr)>=p5?['bo','CPR scăzut – redistribuție posibilă']:['br','CPR anormal – brain sparing'];
-  const brain=parseFloat(cpr)<1.0?'<span class="badge br" style="margin-left:6px">Brain sparing</span>':'';
-  let dvNote=!isNaN(dv)?(dv>0.8?'<div class="res-note" style="margin-top:6px"><strong>Ductus venosus:</strong> PI crescut ('+dv+') – evaluare urgentă, disfuncție cardiacă/acidoză posibilă.</div>':dv>0.6?'<div class="res-note" style="margin-top:6px"><strong>Ductus venosus:</strong> PI intermediar ('+dv+') – monitorizare bisăptămânală.</div>':'<div class="res-note" style="margin-top:6px"><strong>Ductus venosus:</strong> Normal ('+dv+').</div>'):'';
-  const rec=parseFloat(cpr)<p5?'Internare și evaluare urgentă. Discutați momentul nașterii.':parseFloat(cpr)<1.0?'Doppler la 48–72h. NST zilnic dacă >32s.':'Repetați Doppler la 1–2 săptămâni.';
-  showRes('cpr-r',`<div class="res-lbl">Raport Cerebro-Placentar</div><div class="res-main">${cpr}${brain}</div><div class="res-grid"><div class="res-item"><div class="res-val">${mca}</div><div class="res-lbl2">PI MCA</div></div><div class="res-item"><div class="res-val">${ua}</div><div class="res-lbl2">PI art. ombilicală</div></div><div class="res-item"><div class="res-val">${p5}</div><div class="res-lbl2">P5 la ${gaR}s</div></div></div><span class="badge ${cls}" style="margin-top:8px">${level}</span>${dvNote}<div class="res-note" style="margin-top:8px"><strong>Recomandare:</strong> ${rec}</div>`);
-}
-function calcAFI(){
-  const q=[1,2,3,4].map(i=>parseFloat(document.getElementById('afi-q'+i).value));
-  if(q.some(isNaN))return alert('Completați toate 4 cadranele.');
-  const afi=q.reduce((a,b)=>a+b,0);
-  const[s,cls]=afi<5?['Oligohidramnios sever','br']:afi<8?['Oligohidramnios','bo']:afi<=18?['ILA normal','bg']:afi<=24?['Polihidramnios ușor','by']:['Polihidramnios','bo'];
-  showRes('afi-r',`<div class="res-lbl">Indicele Lichidului Amniotic</div><div class="res-main">${afi.toFixed(1)} cm</div><span class="badge ${cls}">${s}</span><div class="res-grid">${q.map((v,i)=>`<div class="res-item"><div class="res-val">${v.toFixed(1)} cm</div><div class="res-lbl2">Cadran ${i+1}</div></div>`).join('')}</div>`);
-}
-function calcVBAC(){
-  const age=parseFloat(document.getElementById('vb-age').value),bmi=parseFloat(document.getElementById('vb-bmi').value);
-  if(isNaN(age)||isNaN(bmi))return alert('Introduceți vârsta și IMC.');
-  const vd=parseInt(document.getElementById('vb-vd').value),ind=document.getElementById('vb-ind').value,ncs=parseInt(document.getElementById('vb-ncs').value),rec=parseInt(document.getElementById('vb-rec').value);
-  let logit=3.762-0.067*age-0.047*bmi+(vd===1?0.882:vd===2?1.364:0)+(ind==='nonrec'?0.576:0)+(ncs===1?0:-0.416)-(rec?0.533:0);
-  const prob=Math.round(100/(1+Math.exp(-logit)));
-  const[cls,note]=prob>=70?['bg','Candidată favorabilă. Discutați beneficiile și riscurile TOLAC.']:prob>=50?['by','Probabilitate moderată. Consiliere individualizată.']:['br','Probabilitate scăzută. Considerați cezariana electivă repetată.'];
-  showRes('vb-r',`<div class="res-lbl">Probabilitate TOLAC reușit</div><div class="res-main">${prob}%</div><span class="badge ${cls}">${prob>=70?'Favorabilă':prob>=50?'Moderată':'Scăzută'}</span><div class="res-note" style="margin-top:8px">${note}</div><div class="res-note" style="font-size:12px;color:#94a3b8;margin-top:4px">Grobman et al., 2007.</div>`);
-}
-function calcHELLP(){
-  const ldh=parseFloat(document.getElementById('hl-ldh').value),ast=parseFloat(document.getElementById('hl-ast').value),alt=parseFloat(document.getElementById('hl-alt').value),plt=parseFloat(document.getElementById('hl-plt').value),bil=parseFloat(document.getElementById('hl-bil').value),hb=parseFloat(document.getElementById('hl-hb').value);
-  if([ldh,ast,plt].some(isNaN))return alert('Completați LDH, AST și trombocite.');
-  const hem=ldh>600||bil>1.2||hb<10,enz=ast>70||((!isNaN(alt))&&alt>40),trom=plt<100;
-  let cls,badge,msg;
-  if(hem&&enz&&trom){cls='br';badge='HELLP complet';msg='Criterii complete. Internare, stabilizare, naștere în funcție de VG.';}
-  else if((hem&&enz)||(hem&&trom)||(enz&&trom)){cls='bo';badge='HELLP parțial';msg='Criterii parțiale. Monitorizare intensivă, repetare analize la 6–12h.';}
-  else{cls='bg';badge='Criterii HELLP absente';msg='Criteriile nu sunt îndeplinite. Continuați monitorizarea clinico-biologică.';}
-  showRes('hl-r',`<div class="res-lbl">Evaluare HELLP</div><span class="badge ${cls}">${badge}</span><div class="res-grid"><div class="res-item"><div class="res-val" style="color:${hem?'#dc2626':'#16a34a'}">${hem?'Da':'Nu'}</div><div class="res-lbl2">Hemoliză</div></div><div class="res-item"><div class="res-val" style="color:${enz?'#dc2626':'#16a34a'}">${enz?'Crescute':'Normale'}</div><div class="res-lbl2">Enzime hepatice</div></div><div class="res-item"><div class="res-val" style="color:${trom?'#dc2626':'#16a34a'}">${trom?'Da':'Nu'}</div><div class="res-lbl2">Trombopenie</div></div></div><div class="res-note" style="margin-top:8px">${msg}</div>`);
-}
-function calcShock(){
-  const hr=parseFloat(document.getElementById('sh-hr').value),sbp=parseFloat(document.getElementById('sh-sbp').value),rr=parseFloat(document.getElementById('sh-rr').value),gcs=parseFloat(document.getElementById('sh-gcs').value);
-  if(isNaN(hr)||isNaN(sbp))return alert('Introduceți FC și TA sistolică.');
-  const si=(hr/sbp).toFixed(2);
-  const[siL,siC]=parseFloat(si)<0.7?['Normal','bg']:parseFloat(si)<1.0?['Risc moderat','by']:parseFloat(si)<1.4?['Risc înalt','bo']:['Șoc sever','br'];
-  let q=0;if(!isNaN(rr)&&rr>=22)q++;if(!isNaN(gcs)&&gcs<15)q++;if(sbp<=100)q++;
-  const[qL,qC]=q>=2?['Risc crescut disfuncție organ','br']:q===1?['Monitorizare atentă','by']:['Risc scăzut','bg'];
-  showRes('sh-r',`<div class="res-lbl">Indice de Șoc & qSOFA</div><div class="res-grid"><div class="res-item"><div class="res-val">${si}</div><div class="res-lbl2">Indice șoc</div></div><div class="res-item"><div class="res-val">${q}/3</div><div class="res-lbl2">qSOFA</div></div></div><span class="badge ${siC}" style="margin-right:6px;margin-top:8px">IS: ${siL}</span><span class="badge ${qC}" style="margin-top:8px">qSOFA: ${qL}</span>`);
-}
-function calcPPH(){
-  const h=['pp-ppa','pp-ppc','pp-phx'].filter(id=>document.getElementById(id).checked).length;
-  const m=['pp-pcs','pp-mult','pp-mac','pp-poly','pp-gmp','pp-fib','pp-cho'].filter(id=>document.getElementById(id).checked).length;
-  const l=['pp-mg','pp-oxt','pp-lng','pp-anm'].filter(id=>document.getElementById(id).checked).length;
-  let[level,cls,rec]=['','',''];
-  if(h>=1){level='RISC ÎNALT';cls='br';rec='Activați protocolul HPP. Acces venos ×2, grup+Rh, alertă bancă sânge. Senior OB + ATI la naștere.';}
-  else if(m>=2||(m>=1&&l>=1)){level='RISC MEDIU';cls='bo';rec='Vigilență sporită. Acces venos ×1, grup+Rh, management activ perioada a 3-a.';}
-  else if(m===1||l>=2){level='RISC SCĂZUT-MEDIU';cls='by';rec='Precauții standard. Documentați și comunicați factorii de risc echipei.';}
-  else{level='RISC SCĂZUT';cls='bg';rec='Îngrijire de rutină cu management activ al delivrenței.';}
-  showRes('pp-r',`<div class="res-lbl">Stratificare risc HPP</div><div class="res-main">${level}</div><span class="badge ${cls}">${h} înalt · ${m} mediu · ${l} scăzut</span><div class="res-note" style="margin-top:8px">${rec}</div>`);
-}
-function calcPE(){
-  const age=parseFloat(document.getElementById('pe-age').value)||0,bmi=parseFloat(document.getElementById('pe-bmi').value)||0,map=parseFloat(document.getElementById('pe-map').value)||0,pappa=parseFloat(document.getElementById('pe-pappa').value)||1;
-  let score=0;if(age>35)score++;if(bmi>30)score++;if(map>90)score++;if(pappa<0.5)score+=2;
-  if(document.getElementById('pe-phx').checked)score+=3;
-  ['pe-fhx','pe-dm','pe-htn','pe-lupus','pe-mult','pe-nul','pe-ivf'].forEach(id=>{if(document.getElementById(id).checked)score++;});
-  const[level,cls,note]=score>=6?['RISC ÎNALT','br','Aspirina 150 mg/zi (11–36 săpt.), monitorizare TA și proteină urinară bilunar.']:score>=3?['RISC INTERMEDIAR','bo','Aspirina 100–150 mg/zi discutată. Monitorizare TA. Repetare screening la 20 săpt.']:['RISC SCĂZUT','bg','Urmărire standard. Informați pacienta despre simptomele de alarmă.'];
-  showRes('pe-r',`<div class="res-lbl">Risc preeclampsie (trim. I)</div><div class="res-main">${level}</div><span class="badge ${cls}">Scor: ${score}</span><div class="res-note" style="margin-top:8px">${note}</div>`);
-}
-function calcMgSO4(){
-  const wt=parseFloat(document.getElementById('mg-wt').value),ind=document.getElementById('mg-ind').value,cr=parseFloat(document.getElementById('mg-cr').value)||0.8,uo=parseFloat(document.getElementById('mg-uo').value)||30;
-  if(isNaN(wt))return alert('Introduceți greutatea pacientei.');
-  const caut=cr>1.2||uo<25;
-  let load,maint,note;
-  if(ind==='pe'){load='4–6 g i.v. în 15–20 min';maint='1–2 g/h i.v. continuu';note='Monitorizați: reflexe patelate, FR, diureză. Antidot: Gluconat de calciu 1g i.v.';}
-  else if(ind==='np'){load='4 g i.v. în 30 min';maint='1 g/h i.v. până la naștere / max. 24h';note='Neuroprotecție fetală la <32 săptămâni.';}
-  else{load='4 g i.v. în 20 min';maint='2–3 g/h, titrare după răspuns';note='Tocoliză de scurtă durată. Monitorizare TA și FCC maternă continuu.';}
-  showRes('mg-r',`<div class="res-lbl">Dozare MgSO₄</div>${caut?'<span class="badge br">ATENȚIE: IR / oligurie – reduceți doza</span>':''}<div class="res-grid"><div class="res-item"><div class="res-val" style="font-size:12px">${load}</div><div class="res-lbl2">Doză atac</div></div><div class="res-item"><div class="res-val" style="font-size:12px">${maint}</div><div class="res-lbl2">Întreținere</div></div></div><div class="res-note" style="margin-top:8px">${note}</div><div class="res-note" style="font-size:12px;color:#94a3b8;margin-top:4px">Toxicitate: reflexe abolite 3–5 mEq/L · stop respirator 5–7 · stop cardiac >15.</div>`);
-}
-function calcCS(){
-  const age=parseFloat(document.getElementById('cs-age').value)||30,bmi=parseFloat(document.getElementById('cs-bmi').value)||25,par=parseInt(document.getElementById('cs-par').value),efw=parseFloat(document.getElementById('cs-efw').value)||3200,ind=parseInt(document.getElementById('cs-ind').value);
-  let score=0;if(age>35)score+=2;if(bmi>30)score+=2;if(bmi>35)score+=1;if(par===0)score+=3;if(efw>4000)score+=2;if(ind)score+=2;
-  ['cs-dm','cs-htn','cs-prev','cs-pos'].forEach(id=>{if(document.getElementById(id).checked)score+=2;});
-  const[level,cls,note]=score>=10?['RISC ÎNALT','br','Discutați cezariana primară electivă. Asigurați echipă chirurgicală disponibilă.']:score>=5?['RISC MODERAT','bo','Pregătiți sala de op. în caz de urgență. Monitorizare atentă a travaliului.']:['RISC SCĂZUT','bg','Naștere vaginală probabilă. Monitorizare standard.'];
-  showRes('cs-r',`<div class="res-lbl">Risc cezariană în travaliu</div><div class="res-main">${level}</div><span class="badge ${cls}">Scor: ${score}</span><div class="res-note" style="margin-top:8px">${note}</div>`);
-}
-function calcTwin(){
-  const chor=document.getElementById('tw-chor').value,ga=parseFloat(document.getElementById('tw-ga').value),efwA=parseFloat(document.getElementById('tw-efwa').value),efwB=parseFloat(document.getElementById('tw-efwb').value);
-  let disc='N/A',dCls='bg',dNote='';
-  if(!isNaN(efwA)&&!isNaN(efwB)&&efwA>0&&efwB>0){const p=Math.round(Math.abs(efwA-efwB)/Math.max(efwA,efwB)*100);disc=p+'%';dCls=p>=25?'br':p>=20?'bo':p>=15?'by':'bg';dNote=p>=25?'Discordanță severă ≥25% – risc TTTS/sRAIU. Evaluare urgentă.':p>=20?'Discordanță semnificativă – Doppler la 2 săptămâni.':p>=15?'Discordanță ușoară – ecografie săptămânală.':'Creștere concordantă.';}
-  const chL=chor==='dc'?'DCDA':chor==='mc'?'MCDA':'MCMA',nasc=chor==='dc'?'38s':chor==='mc'?'36–37s':'32–34s',monit=chor==='dc'?'Ecografii la 4 săpt. până la 28s, apoi bilunar.':chor==='mc'?'Ecografii bilunar de la 16s (TTTS screening).':'Monitorizare săptămânală de la 16s.';
-  showRes('tw-r',`<div class="res-lbl">Sarcina gemelară ${chL}</div><div class="res-grid"><div class="res-item"><div class="res-val">${chL}</div><div class="res-lbl2">Corionicitate</div></div><div class="res-item"><div class="res-val"><span class="badge ${dCls}">${disc}</span></div><div class="res-lbl2">Discordanță EFW</div></div><div class="res-item"><div class="res-val">${nasc}</div><div class="res-lbl2">Naștere recomandată</div></div></div>${dNote?`<div class="res-note" style="margin-top:8px">${dNote}</div>`:''}<div class="res-note" style="margin-top:8px"><strong>Monitorizare:</strong> ${monit}</div>`);
-}
-function calcRMI(){
-  const ca125=parseFloat(document.getElementById('rm-ca125').value),M=parseInt(document.getElementById('rm-meno').value);
-  if(isNaN(ca125))return alert('Introduceți CA-125.');
-  const cnt=['rm-u1','rm-u2','rm-u3','rm-u4','rm-u5'].reduce((a,id)=>a+(document.getElementById(id).checked?1:0),0);
-  const U=cnt===0?0:cnt===1?1:3,rmi=Math.round(U*M*ca125);
-  const[level,cls,note]=rmi>=250?['RISC ÎNALT','br','Trimitere urgentă oncologie ginecologică.']:rmi>=200?['RISC MODERAT-ÎNALT','bo','Discuție multidisciplinară.']:rmi>=100?['RISC MODERAT','by','Evaluare suplimentară (CT, laparoscopie diagnostică).']:['RISC SCĂZUT','bg','Urmărire sau intervenție în centru standard.'];
-  showRes('rm-r',`<div class="res-lbl">RMI</div><div class="res-main">${rmi}</div><span class="badge ${cls}">${level}</span><div class="res-grid"><div class="res-item"><div class="res-val">${U}</div><div class="res-lbl2">Scor eco (U)</div></div><div class="res-item"><div class="res-val">${M}</div><div class="res-lbl2">Menopauză (M)</div></div><div class="res-item"><div class="res-val">${ca125}</div><div class="res-lbl2">CA-125</div></div></div><div class="res-note" style="margin-top:8px">${note}</div>`);
-}
-function calcROMA(){
-  const he4=parseFloat(document.getElementById('ro-he4').value),ca125=parseFloat(document.getElementById('ro-ca125').value),meno=document.getElementById('ro-meno').value;
-  if(isNaN(he4)||isNaN(ca125))return alert('Completați HE4 și CA-125.');
-  const pi=meno==='pre'?-12.0+2.38*Math.log(he4)+0.0626*Math.log(ca125):-8.09+1.04*Math.log(he4)+0.732*Math.log(ca125);
-  const roma=Math.round(Math.exp(pi)/(1+Math.exp(pi))*100),cut=meno==='pre'?11.4:29.9,high=roma>=cut;
-  showRes('ro-r',`<div class="res-lbl">Scor ROMA (${meno==='pre'?'Premenopauză':'Postmenopauză'})</div><div class="res-main">${roma}%</div><span class="badge ${high?'br':'bg'}">${high?'Risc ÎNALT':'Risc SCĂZUT'}</span><div class="res-note" style="margin-top:8px">Prag: ${cut}% · ROMA calculat: ${roma}%</div>`);
-}
-function calcBMI(){
-  const wt=parseFloat(document.getElementById('bm-wt').value),ht=parseFloat(document.getElementById('bm-ht').value)/100;
-  if(isNaN(wt)||isNaN(ht))return alert('Introduceți greutatea și înălțimea.');
-  const bmi=(wt/(ht*ht)).toFixed(1),bsa=Math.sqrt((wt*(ht*100))/3600).toFixed(2),ibw=(22.5*(ht*ht)).toFixed(1);
-  const[cls,label]=bmi<18.5?['bb','Subponderal']:bmi<25?['bg','Normal']:bmi<30?['by','Supraponderal']:bmi<35?['bo','Obezitate grad I']:bmi<40?['bo','Obezitate grad II']:['br','Obezitate grad III'];
-  showRes('bm-r',`<div class="res-lbl">IMC & Suprafață corporală</div><div class="res-grid"><div class="res-item"><div class="res-val">${bmi}</div><div class="res-lbl2">IMC (kg/m²)</div></div><div class="res-item"><div class="res-val">${bsa} m²</div><div class="res-lbl2">BSA (Mosteller)</div></div><div class="res-item"><div class="res-val">${ibw} kg</div><div class="res-lbl2">Greutate ideală</div></div></div><span class="badge ${cls}" style="margin-top:8px">${label}</span>`);
-}
-function calcMRS(){
-  const ids=['mr-hf','mr-hrt','mr-slp','mr-dep','mr-anx','mr-cog','mr-sex','mr-uri','mr-art','mr-vag'];
-  const sc=ids.reduce((a,id)=>a+parseInt(document.getElementById(id).value),0);
-  const[level,cls]=sc<=4?['Fără simptome / minime','bg']:sc<=8?['Simptome ușoare','bg']:sc<=15?['Simptome moderate','by']:sc<=23?['Simptome severe','bo']:['Simptome foarte severe','br'];
-  showRes('mr-r',`<div class="res-lbl">Scor MRS</div><div class="res-main">${sc} / 44</div><span class="badge ${cls}">${level}</span><div class="res-note" style="margin-top:8px">0–4: fără simptome · 5–8: ușoare · 9–15: moderate · 16–23: severe · ≥24: f. severe</div>`);
-}
-function calcEndoCa(){
-  const age=parseFloat(document.getElementById('ec-age').value)||50,bmi=parseFloat(document.getElementById('ec-bmi').value)||25;
-  let score=0;if(age>55)score+=3;else if(age>45)score+=1;if(bmi>40)score+=4;else if(bmi>35)score+=3;else if(bmi>30)score+=2;
-  if(document.getElementById('ec-lynch').checked)score+=5;if(document.getElementById('ec-bleed').checked)score+=4;
-  ['ec-dm','ec-htn','ec-nullip','ec-meno','ec-meno2','ec-pcos','ec-tam','ec-hrt'].forEach(id=>{if(document.getElementById(id).checked)score++;});
-  const[level,cls,note]=score>=8?['RISC ÎNALT','br','Biopsie endometru indicată. Ecografie TV. Consult oncologic.']:score>=4?['RISC MODERAT','bo','Investigații suplimentare (eco TV, histeroscopie dacă indicat). Monitorizare anuală.']:['RISC SCĂZUT','bg','Screening standard. Informați pacienta despre simptome de alarmă.'];
-  showRes('ec-r',`<div class="res-lbl">Risc cancer endometrial</div><div class="res-main">${level}</div><span class="badge ${cls}">Scor: ${score}</span><div class="res-note" style="margin-top:8px">${note}</div>`);
-}
-function calcOvRes(){
-  const amh=parseFloat(document.getElementById('ov-amh').value),fsh=parseFloat(document.getElementById('ov-fsh').value),afc=parseFloat(document.getElementById('ov-afc').value),age=parseFloat(document.getElementById('ov-age').value)||35;
-  let results=[];
-  if(!isNaN(amh)){const[l,c]=amh<0.5?['Rezervă diminuată sever','br']:amh<1.1?['Rezervă scăzută','bo']:amh<=3.5?['Rezervă normală','bg']:['Rezervă crescută (risc SHO)','by'];results.push(`<div class="res-item"><div class="res-val"><span class="badge ${c}" style="font-size:11px">${l}</span></div><div class="res-lbl2">AMH: ${amh} ng/mL</div></div>`);}
-  if(!isNaN(fsh)){const[l,c]=fsh>20?['FSH sever crescut','br']:fsh>10?['FSH crescut','bo']:fsh>=3?['FSH normal','bg']:['FSH scăzut','by'];results.push(`<div class="res-item"><div class="res-val"><span class="badge ${c}" style="font-size:11px">${l}</span></div><div class="res-lbl2">FSH: ${fsh} mUI/mL</div></div>`);}
-  if(!isNaN(afc)){const[l,c]=afc<4?['AFC diminuat sever','br']:afc<7?['AFC scăzut','bo']:afc<=15?['AFC normal','bg']:['AFC crescut (risc SHO)','by'];results.push(`<div class="res-item"><div class="res-val"><span class="badge ${c}" style="font-size:11px">${l}</span></div><div class="res-lbl2">AFC: ${afc} foliculi</div></div>`);}
-  if(!results.length)return alert('Introduceți cel puțin un marker.');
-  showRes('ov-r',`<div class="res-lbl">Rezervă ovariană (vârstă: ${age} ani)</div><div class="res-grid">${results.join('')}</div><div class="res-note" style="margin-top:8px;font-size:12px;color:#94a3b8">Valorile de referință variază între laboratoare.</div>`);
-}
-function calcRASRM(){
-  const ids=['ra-ps','ra-pd','ra-osr','ra-osl','ra-oadr','ra-oadl','ra-fdr','ra-fdl','ra-pod'];
-  const sc=ids.reduce((a,id)=>a+parseInt(document.getElementById(id).value),0);
-  const[stage,cls,note]=sc<=5?['Stadiu I – Minimă','bg','Depozite superficiale izolate.']:sc<=15?['Stadiu II – Ușoară','by','Leziuni superficiale fără sau cu aderențe minime.']:sc<=40?['Stadiu III – Moderată','bo','Endometrioame și/sau aderențe multiple.']:['Stadiu IV – Severă','br','Aderențe dense, obliterare Douglas, endometrioame mari.'];
-  showRes('ra-r',`<div class="res-lbl">Clasificare rASRM</div><div class="res-main">${sc} puncte</div><span class="badge ${cls}">${stage}</span><div class="res-note" style="margin-top:8px">${note}</div>`);
-}
-function calcEnzian(){
-  const a=document.getElementById('ez-a').value,b=document.getElementById('ez-b').value,c=document.getElementById('ez-c').value,f=document.getElementById('ez-f').value,oma=document.getElementById('ez-oma').value,adh=parseInt(document.getElementById('ez-adh').value);
-  const tot=parseInt(a)+parseInt(b)+parseInt(c)+parseInt(f)+adh;
-  const[sev,cls,note]=tot===0?['Fără DIE','bg','Nicio endometrioză profundă identificată.']:tot<=3?['DIE ușoară','by','Management conservator sau medicamentos.']:tot<=7?['DIE moderată','bo','Planificare chirurgicală multidisciplinară recomandată.']:['DIE severă','br','Abord chirurgical multidisciplinar obligatoriu.'];
-  const omaL=oma==='none'?'Absent':oma==='bilateral'?'Bilateral':oma==='right'?'Drept':'Stâng';
-  showRes('ez-r',`<div class="res-lbl">Clasificare Enzian</div><div class="res-main">A${a} B${b} C${c} F${f}</div><span class="badge ${cls}">${sev}</span><div class="res-grid"><div class="res-item"><div class="res-val">A${a}</div><div class="res-lbl2">Rectovaginal</div></div><div class="res-item"><div class="res-val">B${b}</div><div class="res-lbl2">Uterosacrate</div></div><div class="res-item"><div class="res-val">C${c}</div><div class="res-lbl2">Rect/sigmoid</div></div><div class="res-item"><div class="res-val">F${f}</div><div class="res-lbl2">Alte regiuni</div></div><div class="res-item"><div class="res-val">${omaL}</div><div class="res-lbl2">Endometriom</div></div></div><div class="res-note" style="margin-top:8px">${note}</div>`);
-}
-function calcPBAC(){
-  const pads=parseFloat(document.getElementById('pb-pads').value)||0,tamp=parseFloat(document.getElementById('pb-tamp').value)||0,cls2=parseFloat(document.getElementById('pb-cls').value)||0,cll=parseFloat(document.getElementById('pb-cll').value)||0,spot=parseFloat(document.getElementById('pb-spot').value)||0;
-  const score=Math.round(pads+tamp+cls2+cll*5+spot*0.5);
-  const[level,cls,note]=score>=100?['Menoragie semnificativă (≥100)','br','Hemogramă, feritină, eco TV, histeroscopie. Discutați opțiuni terapeutice.']:score>=50?['Sângerare moderată (50–99)','bo','Monitorizare și investigații în funcție de simptome asociate.']:['Sângerare în limite normale (<50)','bg','Sub pragul de menoragie. Reevaluare dacă se agravează.'];
-  showRes('pb-r',`<div class="res-lbl">Scor PBAC</div><div class="res-main">${score} puncte</div><span class="badge ${cls}">${level}</span><div class="res-note" style="margin-top:8px">${note}</div>`);
-}
-function calcECOG(){
-  const sel=document.querySelector('input[name="ecog"]:checked');
-  if(!sel)return alert('Selectați un status ECOG.');
-  const v=parseInt(sel.value);
-  const labels=['Activ complet – fără restricții','Ambulatoriu – muncă ușoară posibilă','Ambulatoriu – nu poate munci','Îngrijire limitată – >50% în pat','Complet dependent','Decedat'];
-  const cls=['bg','bg','by','bo','br','br'];
-  const notes=['Tolerează toate liniile de tratament.','Toleranță bună la chimioterapie standard.','Tratament paliativ preferat. Monitorizare atentă.','Tratament sistemic cu risc crescut. Individualizați decizia.','Tratament agresiv contraindicat. Îngrijiri paliative.',''];
-  showRes('eg-r',`<div class="res-lbl">Status ECOG</div><div class="res-main">ECOG ${v}</div><span class="badge ${cls[v]}">${labels[v]}</span><div class="res-note" style="margin-top:8px">${notes[v]}</div>`);
+// ======= CALCULE =======
+function gaMeth(){const m=document.getElementById('ga-m').value;document.getElementById('ga-lmp').classList.toggle('hidden',m!=='lmp');document.getElementById('ga-us').classList.toggle('hidden',m!=='us');document.getElementById('ga-con').classList.toggle('hidden',m!=='con');}
+function calcGA(){const m=document.getElementById('ga-m').value;let edd,gaW,gaD,now=new Date();now.setHours(0,0,0,0);if(m==='lmp'){const v=document.getElementById('ga-lmpd').value;if(!v)return alert('Introduceți data LMP.');const lmp=new Date(v),cyc=parseInt(document.getElementById('ga-cyc').value)||28;edd=new Date(lmp);edd.setDate(lmp.getDate()+280+(cyc-28));const d=Math.floor((now-lmp)/864e5);gaW=Math.floor(d/7);gaD=d%7;}else if(m==='us'){const ud=document.getElementById('ga-usd').value,crl=parseFloat(document.getElementById('ga-crl').value);if(!ud||isNaN(crl))return alert('Introduceți data ecografiei și LCC.');const gaAtUs=Math.round(8.052*Math.pow(crl,0.5)+23.73);const uDate=new Date(ud);edd=new Date(uDate);edd.setDate(uDate.getDate()+(280-gaAtUs));const tot=gaAtUs+Math.floor((now-uDate)/864e5);gaW=Math.floor(tot/7);gaD=tot%7;}else{const cd=document.getElementById('ga-cond').value;if(!cd)return alert('Introduceți data concepției.');const c=new Date(cd);edd=new Date(c);edd.setDate(c.getDate()+266);const tot=Math.floor((now-c)/864e5)+14;gaW=Math.floor(tot/7);gaD=tot%7;}const trim=gaW<14?'Trim. I':gaW<28?'Trim. II':'Trim. III';const zile=Math.max(0,Math.floor((edd-now)/864e5));showRes('ga-r',`<div class="res-lbl">Data probabilă a nașterii</div><div class="res-main">${fmt(edd)}</div><div class="res-grid"><div class="res-item"><div class="res-val">${gaW}s ${gaD}z</div><div class="res-lbl2">Vârstă gestațională</div></div><div class="res-item"><div class="res-val">${zile}</div><div class="res-lbl2">Zile rămase</div></div><div class="res-item"><div class="res-val">${trim}</div><div class="res-lbl2">Trimestru</div></div></div>`);}
+
+function calcFMF(){
+  const age=parseFloat(document.getElementById('fmf-age').value);
+  const crl=parseFloat(document.getElementById('fmf-crl').value);
+  const wt=parseFloat(document.getElementById('fmf-wt').value)||70;
+  if(isNaN(age)||isNaN(crl))return alert('Introduceți vârsta maternă și LCC.');
+  if(crl<45||crl>84)return alert('LCC trebuie să fie între 45–84 mm (11–13+6 săptămâni).');
+
+  // Risc bazal T21 pe vârstă maternă (model Snijders 1994, Nicolaides 2004)
+  const ageRisk21=Math.exp(-16.2898+0.286*age-0.003*age*age+(1/(0.00001*Math.pow(age,4.2))));
+  const baseT21=Math.max(1/500,Math.min(1/5,ageRisk21));
+  // T18/T13 risc bazal (~1/5 din T21 la vârste tinere)
+  const baseT18=baseT21/3;
+
+  let lr21=1,lr18=1;
+
+  // NT MoM – calcul din NT absolut și LCC
+  const ntVal=parseFloat(document.getElementById('fmf-nt').value);
+  if(!isNaN(ntVal)){
+    const ntMedian=Math.exp(-0.7766+0.02877*crl-0.0001137*crl*crl);
+    const ntMoM=ntVal/ntMedian;
+    // LR pentru NT (distribucții log-normale – Nicolaides 2004)
+    const lnNT=Math.log(ntMoM);
+    const lr21nt=Math.exp(-0.5*Math.pow((lnNT-0.248)/0.55,2))/Math.exp(-0.5*Math.pow((lnNT+0.336)/0.46,2));
+    const lr18nt=Math.exp(-0.5*Math.pow((lnNT-0.7)/0.6,2))/Math.exp(-0.5*Math.pow((lnNT+0.336)/0.46,2));
+    lr21*=Math.max(0.01,Math.min(100,lr21nt));
+    lr18*=Math.max(0.01,Math.min(100,lr18nt));
+  }
+
+  // PAPP-A MoM
+  const pappa=parseFloat(document.getElementById('fmf-pappa').value);
+  if(!isNaN(pappa)&&pappa>0){
+    const lnP=Math.log(pappa);
+    const lr21p=Math.exp(-0.5*Math.pow((lnP+0.68)/0.74,2))/Math.exp(-0.5*Math.pow((lnP)/0.74,2));
+    const lr18p=Math.exp(-0.5*Math.pow((lnP+1.1)/0.7,2))/Math.exp(-0.5*Math.pow((lnP)/0.74,2));
+    lr21*=Math.max(0.05,Math.min(20,lr21p));
+    lr18*=Math.max(0.05,Math.min(20,lr18p));
+  }
+
+  // free β-hCG MoM
+  const bhcg=parseFloat(document.getElementById('fmf-bhcg').value);
+  if(!isNaN(bhcg)&&bhcg>0){
+    const lnB=Math.log(bhcg);
+    const lr21b=Math.exp(-0.5*Math.pow((lnB-0.32)/0.72,2))/Math.exp(-0.5*Math.pow((lnB)/0.72,2));
+    const lr18b=Math.exp(-0.5*Math.pow((lnB-0.6)/0.7,2))/Math.exp(-0.5*Math.pow((lnB)/0.72,2));
+    lr21*=Math.max(0.05,Math.min(20,lr21b));
+    lr18*=Math.max(0.05,Math.min(20,lr18b));
+  }
+
+  // Os nazal
+  const nb=document.getElementById('fmf-nb').value;
+  if(nb==='absent'){lr21*=6;lr18*=3;}
+
+  // Regurgitare tricuspidiană
+  const tr=document.getElementById('fmf-tr').value;
+  if(tr==='present'){lr21*=5;lr18*=2;}
+
+  // Ductus venosus
+  const dv=document.getElementById('fmf-dv').value;
+  if(dv==='abnormal'){lr21*=4.5;lr18*=4;}
+
+  // Etnie
+  const eth=document.getElementById('fmf-eth').value;
+  if(eth==='afro')lr21*=1.5;
+  if(eth==='sa')lr21*=0.9;
+
+  // Antecedente
+  if(document.getElementById('fmf-hx').value==='1')lr21*=3;
+
+  const risk21=baseT21*lr21;
+  const risk18=baseT18*lr18;
+
+  const fmt21=risk21>=1?'1:1':`1:${Math.round(1/risk21)}`;
+  const fmt18=risk18>=1?'1:1':`1:${Math.round(1/risk18)}`;
+
+  const high21=risk21>=1/100,high18=risk18>=1/100;
+  const int21=!high21&&risk21>=1/300,int18=!high18&&risk18>=1/300;
+
+  const cls21=high21?'risk-high':int21?'risk-int':'risk-low';
+  const cls18=high18?'risk-high':int18?'risk-int':'risk-low';
+  const lbl21=high21?'Risc ÎNALT':int21?'Risc intermediar':'Risc SCĂZUT';
+  const lbl18=high18?'Risc ÎNALT':int18?'Risc intermediar':'Risc SCĂZUT';
+
+  const ntMoMTxt=!isNaN(ntVal)?(()=>{const m=ntVal/Math.exp(-0.7766+0.02877*crl-0.0001137*crl*crl);return m.toFixed(2)+' MoM';})():'Neevaluat';
+  const pappaTxt=!isNaN(pappa)?pappa+' MoM':'Neevaluat';
+  const bhcgTxt=!isNaN(bhcg)?bhcg+' MoM':'Neevaluat';
+
+  showRes('fmf-r',`
+    <div class="res-lbl">Screening T1 – Rezultate</div>
+    <div class="grid2" style="margin-top:0.75rem;gap:0.75rem">
+      <div class="risk-box ${cls21}">
+        <div style="font-size:11px;font-weight:700;margin-bottom:4px">TRISOMIA 21</div>
+        <div class="risk-val">${fmt21}</div>
+        <div style="font-size:12px;font-weight:600">${lbl21}</div>
+      </div>
+      <div class="risk-box ${cls18}">
+        <div style="font-size:11px;font-weight:700;margin-bottom:4px">TRISOMIA 18/13</div>
+        <div class="risk-val">${fmt18}</div>
+        <div style="font-size:12px;font-weight:600">${lbl18}</div>
+      </div>
+    </div>
+    <div class="res-grid" style="margin-top:0.75rem">
+      <div class="res-item"><div class="res-val" style="font-size:13px">${ntMoMTxt}</div><div class="res-lbl2">NT</div></div>
+      <div class="res-item"><div class="res-val" style="font-size:13px">${pappaTxt}</div><div class="res-lbl2">PAPP-A</div></div>
+      <div class="res-item"><div class="res-val" style="font-size:13px">${bhcgTxt}</div><div class="res-lbl2">free β-hCG</div></div>
+    </div>
+    <div class="res-note" style="margin-top:10px">
+      <strong>Prag risc înalt FMF:</strong> ≥1:100 → recomandare pentru testare invazivă (amniocenteză / biopsie de vilozități coriale) sau cfDNA (NIPT).<br>
+      <strong>Prag intermediar:</strong> 1:101–1:300 → discuție individualizată, NIPT recomandat.
+    </div>
+    <div class="res-note" style="margin-top:6px;font-size:11px;color:#94a3b8">⚠️ Rezultat orientativ. Confirmați cu softul FMF certificat și valorile MoM calibrate de laborator.</div>
+  `);
 }
 
-// INIT
+function calcEFW(){const f=document.getElementById('ef-form').value;const bpd=parseFloat(document.getElementById('ef-bpd').value)/10,hc=parseFloat(document.getElementById('ef-hc').value)/10,ac=parseFloat(document.getElementById('ef-ac').value)/10,fl=parseFloat(document.getElementById('ef-fl').value)/10;let log;if(f==='4'){if([bpd,hc,ac,fl].some(isNaN))return alert('Completați toate 4.');log=1.3596+0.0064*hc+0.0424*ac+0.174*fl+0.00061*bpd*ac-0.00386*ac*fl;}else if(f==='3'){if([hc,ac,fl].some(isNaN))return alert('Completați PC, PA, LF.');log=1.326-0.00326*ac*fl+0.0107*hc+0.0438*ac+0.158*fl;}else{if([ac,fl].some(isNaN))return alert('Completați PA și LF.');log=1.304+0.05281*ac+0.1938*fl-0.004*ac*fl;}const efw=Math.round(Math.pow(10,log)),lbs=(efw/453.592).toFixed(1);const[s,c]=efw<2500?['<10 percentilă – posibil RCF','br']:efw<=4000?['Greutate normală','bg']:['Macrosomie suspectată','bo'];showRes('efw-r',`<div class="res-lbl">EFW</div><div class="res-main">${efw.toLocaleString('ro-RO')} g | ${lbs} lbs</div><span class="badge ${c}">${s}</span>`);}
+function calcBishop(){const sc=['bs-dil','bs-eff','bs-sta','bs-con','bs-pos'].reduce((a,id)=>a+parseInt(document.getElementById(id).value),0);const[i,c]=sc<=5?['Col nefavorabil – maturare cervicală recomandată','br']:sc<=7?['Intermediar – posibil necesară maturare','by']:['Favorabil – inducere cu șanse bune de succes','bg'];showRes('bs-r',`<div class="res-lbl">Scor Bishop</div><div class="res-main">${sc}/13</div><span class="badge ${c}">${sc<=5?'Nefavorabil':sc<=7?'Intermediar':'Favorabil'}</span><div class="res-note" style="margin-top:8px">${i}</div>`);}
+function calcBPP(){const sc=['bpp-mns','bpp-mg','bpp-ton','bpp-nst','bpp-afi'].reduce((a,id)=>a+(document.getElementById(id).checked?2:0),0);const[i,c]=sc===10?['Normal – supraveghere de rutină','bg']:sc>=8?['Normal – repetați săptămânal','bg']:sc>=6?['Echivoc – repetați în 24h','by']:sc>=4?['Anormal – evaluare urgentă','bo']:['Critic – naștere indicată','br'];showRes('bpp-r',`<div class="res-lbl">Scor BPP Manning</div><div class="res-main">${sc}/10</div><span class="badge ${c}">${sc>=8?'Normal':sc>=6?'Echivoc':sc>=4?'Anormal':'Critic'}</span><div class="res-note" style="margin-top:8px">${i}</div>`);}
+function calcMCAPSV(){let psv=parseFloat(document.getElementById('mca-psv').value);const ga=parseFloat(document.getElementById('mca-ga').value);if(isNaN(psv)||isNaN(ga))return alert('Introduceți VG și PSV.');if(document.getElementById('mca-unit').value==='ms')psv*=100;const med={18:23.2,19:24.3,20:25.5,21:26.8,22:28.1,23:29.5,24:31.0,25:32.6,26:34.2,27:35.9,28:37.7,29:39.6,30:41.6,31:43.7,32:45.9,33:48.2,34:50.6,35:53.1,36:55.8,37:58.6,38:61.6,39:64.7,40:67.9};const gaR=Math.round(ga),mediana=med[gaR];if(!mediana)return alert('VG între 18–40 săpt.');const mom=(psv/mediana).toFixed(2),prag=(mediana*1.5).toFixed(1);const[c,l,r]=parseFloat(mom)<1.0?['bg','Normal (<1.0 MoM)','Repetați la interval standard.']:parseFloat(mom)<1.5?['by','Intermediar (1.0–1.49 MoM)','Repetați la 1–2 săptămâni.']:parseFloat(mom)<1.55?['bo','Limită critică (1.5–1.55 MoM)','Consultare maternofetală urgentă.']:['br','Anemie severă probabilă (>1.55 MoM)','Internare urgentă. Cordocenteză ± transfuzie.'];showRes('mca-r',`<div class="res-lbl">MCA-PSV</div><div class="res-grid"><div class="res-item"><div class="res-val">${psv.toFixed(1)} cm/s</div><div class="res-lbl2">PSV</div></div><div class="res-item"><div class="res-val">${mediana} cm/s</div><div class="res-lbl2">Mediană ${gaR}s</div></div><div class="res-item"><div class="res-val">${mom} MoM</div><div class="res-lbl2">MoM</div></div><div class="res-item"><div class="res-val">${prag}</div><div class="res-lbl2">Prag 1.5 MoM</div></div></div><span class="badge ${c}" style="margin-top:8px">${l}</span><div class="res-note" style="margin-top:8px">${r}</div>`);}
+function calcCPR(){const mca=parseFloat(document.getElementById('cpr-mca').value),ua=parseFloat(document.getElementById('cpr-ua').value),ga=parseFloat(document.getElementById('cpr-ga').value),dv=parseFloat(document.getElementById('cpr-dv').value);if(isNaN(mca)||isNaN(ua))return alert('Introduceți PI MCA și PI UA.');const cpr=(mca/ua).toFixed(2);const p5t={24:1.05,25:1.06,26:1.07,27:1.08,28:1.09,29:1.10,30:1.08,31:1.07,32:1.06,33:1.05,34:1.04,35:1.02,36:1.00,37:0.98,38:0.96,39:0.94,40:0.92};const gaR=Math.round(ga)||34,p5=p5t[gaR]||1.0;const[c,l]=parseFloat(cpr)>=1.08?['bg','CPR normal']:parseFloat(cpr)>=1.0?['by','CPR la limita inferioară']:parseFloat(cpr)>=p5?['bo','CPR scăzut']:['br','CPR anormal – brain sparing'];const brain=parseFloat(cpr)<1.0?'<span class="badge br" style="margin-left:6px">Brain sparing</span>':'';let dvN=!isNaN(dv)?(dv>0.8?'<div class="res-note" style="margin-top:6px">DV PI='+dv+' – CRESCUT, evaluare urgentă.</div>':dv>0.6?'<div class="res-note" style="margin-top:6px">DV PI='+dv+' – intermediar, monitorizare.</div>':'<div class="res-note" style="margin-top:6px">DV PI='+dv+' – normal.</div>'):'';showRes('cpr-r',`<div class="res-lbl">CPR</div><div class="res-main">${cpr}${brain}</div><div class="res-grid"><div class="res-item"><div class="res-val">${mca}</div><div class="res-lbl2">PI MCA</div></div><div class="res-item"><div class="res-val">${ua}</div><div class="res-lbl2">PI UA</div></div><div class="res-item"><div class="res-val">${p5}</div><div class="res-lbl2">P5 la ${gaR}s</div></div></div><span class="badge ${c}" style="margin-top:8px">${l}</span>${dvN}`);}
+function calcAFI(){const q=[1,2,3,4].map(i=>parseFloat(document.getElementById('afi-q'+i).value));if(q.some(isNaN))return alert('Completați toate 4 cadranele.');const afi=q.reduce((a,b)=>a+b,0);const[s,c]=afi<5?['Oligohidramnios sever','br']:afi<8?['Oligohidramnios','bo']:afi<=18?['ILA normal','bg']:afi<=24?['Polihidramnios ușor','by']:['Polihidramnios','bo'];showRes('afi-r',`<div class="res-lbl">ILA</div><div class="res-main">${afi.toFixed(1)} cm</div><span class="badge ${c}">${s}</span><div class="res-grid">${q.map((v,i)=>`<div class="res-item"><div class="res-val">${v.toFixed(1)}</div><div class="res-lbl2">Cadran ${i+1}</div></div>`).join('')}</div>`);}
+function calcVBAC(){const age=parseFloat(document.getElementById('vb-age').value),bmi=parseFloat(document.getElementById('vb-bmi').value);if(isNaN(age)||isNaN(bmi))return alert('Introduceți vârsta și IMC.');const vd=parseInt(document.getElementById('vb-vd').value),ind=document.getElementById('vb-ind').value,ncs=parseInt(document.getElementById('vb-ncs').value),rec=parseInt(document.getElementById('vb-rec').value);let logit=3.762-0.067*age-0.047*bmi+(vd===1?0.882:vd===2?1.364:0)+(ind==='nonrec'?0.576:0)+(ncs===1?0:-0.416)-(rec?0.533:0);const prob=Math.round(100/(1+Math.exp(-logit)));const[c,n]=prob>=70?['bg','Candidată favorabilă pentru TOLAC.']:prob>=50?['by','Probabilitate moderată. Consiliere individualizată.']:['br','Probabilitate scăzută. Considerați cezariana electivă.'];showRes('vb-r',`<div class="res-lbl">Probabilitate TOLAC</div><div class="res-main">${prob}%</div><span class="badge ${c}">${prob>=70?'Favorabilă':prob>=50?'Moderată':'Scăzută'}</span><div class="res-note" style="margin-top:8px">${n}</div>`);}
+function calcHELLP(){const ldh=parseFloat(document.getElementById('hl-ldh').value),ast=parseFloat(document.getElementById('hl-ast').value),alt=parseFloat(document.getElementById('hl-alt').value),plt=parseFloat(document.getElementById('hl-plt').value),bil=parseFloat(document.getElementById('hl-bil').value),hb=parseFloat(document.getElementById('hl-hb').value);if([ldh,ast,plt].some(isNaN))return alert('Completați LDH, AST și trombocite.');const hem=ldh>600||bil>1.2||hb<10,enz=ast>70||((!isNaN(alt))&&alt>40),trom=plt<100;let c,b,m;if(hem&&enz&&trom){c='br';b='HELLP complet';m='Criterii complete. Internare, stabilizare, naștere conform VG.';}else if((hem&&enz)||(hem&&trom)||(enz&&trom)){c='bo';b='HELLP parțial';m='Criterii parțiale. Monitorizare intensivă, repetare analize 6–12h.';}else{c='bg';b='Criterii HELLP absente';m='Criteriile nu sunt îndeplinite. Continuați monitorizarea.';}showRes('hl-r',`<div class="res-lbl">Evaluare HELLP</div><span class="badge ${c}">${b}</span><div class="res-grid"><div class="res-item"><div class="res-val" style="color:${hem?'#dc2626':'#16a34a'}">${hem?'Da':'Nu'}</div><div class="res-lbl2">Hemoliză</div></div><div class="res-item"><div class="res-val" style="color:${enz?'#dc2626':'#16a34a'}">${enz?'Crescute':'Normale'}</div><div class="res-lbl2">Enzime hepatice</div></div><div class="res-item"><div class="res-val" style="color:${trom?'#dc2626':'#16a34a'}">${trom?'Da':'Nu'}</div><div class="res-lbl2">Trombopenie</div></div></div><div class="res-note" style="margin-top:8px">${m}</div>`);}
+function calcShock(){const hr=parseFloat(document.getElementById('sh-hr').value),sbp=parseFloat(document.getElementById('sh-sbp').value),rr=parseFloat(document.getElementById('sh-rr').value),gcs=parseFloat(document.getElementById('sh-gcs').value);if(isNaN(hr)||isNaN(sbp))return alert('Introduceți FC și TAS.');const si=(hr/sbp).toFixed(2);const[sl,sc]=parseFloat(si)<0.7?['Normal','bg']:parseFloat(si)<1.0?['Risc moderat','by']:parseFloat(si)<1.4?['Risc înalt','bo']:['Șoc sever','br'];let q=0;if(!isNaN(rr)&&rr>=22)q++;if(!isNaN(gcs)&&gcs<15)q++;if(sbp<=100)q++;const[ql,qc]=q>=2?['Risc crescut','br']:q===1?['Monitorizare','by']:['Risc scăzut','bg'];showRes('sh-r',`<div class="res-lbl">Indice Șoc & qSOFA</div><div class="res-grid"><div class="res-item"><div class="res-val">${si}</div><div class="res-lbl2">Indice șoc</div></div><div class="res-item"><div class="res-val">${q}/3</div><div class="res-lbl2">qSOFA</div></div></div><span class="badge ${sc}" style="margin-right:6px;margin-top:8px">IS: ${sl}</span><span class="badge ${qc}" style="margin-top:8px">qSOFA: ${ql}</span>`);}
+function calcPPH(){const h=['pp-ppa','pp-ppc','pp-phx'].filter(id=>document.getElementById(id).checked).length;const m=['pp-pcs','pp-mult','pp-mac','pp-poly','pp-gmp','pp-fib','pp-cho'].filter(id=>document.getElementById(id).checked).length;const l=['pp-mg','pp-oxt','pp-lng','pp-anm'].filter(id=>document.getElementById(id).checked).length;let[lv,c,r]=['','',''];if(h>=1){lv='RISC ÎNALT';c='br';r='Activați protocolul HPP. Acces venos ×2, grup+Rh, bancă sânge alertată. Senior OB + ATI la naștere.';}else if(m>=2||(m>=1&&l>=1)){lv='RISC MEDIU';c='bo';r='Acces venos ×1, grup+Rh, management activ delivrență. Comunicați echipei.';}else if(m===1||l>=2){lv='RISC SCĂZUT-MEDIU';c='by';r='Precauții standard. Documentați factori de risc.';}else{lv='RISC SCĂZUT';c='bg';r='Îngrijire de rutină, management activ al delivrenței.';}showRes('pp-r',`<div class="res-lbl">Stratificare HPP</div><div class="res-main">${lv}</div><span class="badge ${c}">${h} înalt · ${m} mediu · ${l} scăzut</span><div class="res-note" style="margin-top:8px">${r}</div>`);}
+function calcPE(){const age=parseFloat(document.getElementById('pe-age').value)||0,bmi=parseFloat(document.getElementById('pe-bmi').value)||0,map=parseFloat(document.getElementById('pe-map').value)||0,pappa=parseFloat(document.getElementById('pe-pappa').value)||1;let score=0;if(age>35)score++;if(bmi>30)score++;if(map>90)score++;if(pappa<0.5)score+=2;if(document.getElementById('pe-phx').checked)score+=3;['pe-fhx','pe-dm','pe-htn','pe-lupus','pe-mult','pe-nul','pe-ivf'].forEach(id=>{if(document.getElementById(id).checked)score++;});const[lv,c,n]=score>=6?['RISC ÎNALT','br','Aspirina 150 mg/zi (11–36 săpt.), monitorizare TA și proteinurie bilunar.']:score>=3?['RISC INTERMEDIAR','bo','Aspirina 100–150 mg/zi discutată. Monitorizare TA. Ecografii seriate.']:['RISC SCĂZUT','bg','Urmărire standard. Informați pacienta despre simptomele de alarmă.'];showRes('pe-r',`<div class="res-lbl">Risc preeclampsie</div><div class="res-main">${lv}</div><span class="badge ${c}">Scor: ${score}</span><div class="res-note" style="margin-top:8px">${n}</div>`);}
+function calcMgSO4(){const wt=parseFloat(document.getElementById('mg-wt').value),ind=document.getElementById('mg-ind').value,cr=parseFloat(document.getElementById('mg-cr').value)||0.8,uo=parseFloat(document.getElementById('mg-uo').value)||30;if(isNaN(wt))return alert('Introduceți greutatea.');const caut=cr>1.2||uo<25;let ld,mt,nt;if(ind==='pe'){ld='4–6 g i.v. în 15–20 min';mt='1–2 g/h i.v. continuu';nt='Monitorizați reflexe, FR, diureză. Antidot: Ca gluconat 1g i.v.';}else if(ind==='np'){ld='4 g i.v. în 30 min';mt='1 g/h i.v. până la naștere / max. 24h';nt='Neuroprotecție fetală indicată <32 săptămâni.';}else{ld='4 g i.v. în 20 min';mt='2–3 g/h, titrare după răspuns';nt='Tocoliză. Monitorizare TA și FCC maternă continuu.';}showRes('mg-r',`<div class="res-lbl">Dozare MgSO₄</div>${caut?'<span class="badge br">ATENȚIE: IR/oligurie – reduceți doza</span>':''}<div class="res-grid"><div class="res-item"><div class="res-val" style="font-size:12px">${ld}</div><div class="res-lbl2">Doză atac</div></div><div class="res-item"><div class="res-val" style="font-size:12px">${mt}</div><div class="res-lbl2">Întreținere</div></div></div><div class="res-note" style="margin-top:8px">${nt}</div>`);}
+function calcCS(){const age=parseFloat(document.getElementById('cs-age').value)||30,bmi=parseFloat(document.getElementById('cs-bmi').value)||25,par=parseInt(document.getElementById('cs-par').value),efw=parseFloat(document.getElementById('cs-efw').value)||3200,ind=parseInt(document.getElementById('cs-ind').value);let score=0;if(age>35)score+=2;if(bmi>30)score+=2;if(bmi>35)score+=1;if(par===0)score+=3;if(efw>4000)score+=2;if(ind)score+=2;['cs-dm','cs-htn','cs-prev','cs-pos'].forEach(id=>{if(document.getElementById(id).checked)score+=2;});const[lv,c,n]=score>=10?['RISC ÎNALT','br','Discutați cezariana primară electivă. Echipă chirurgicală disponibilă.']:score>=5?['RISC MODERAT','bo','Pregătiți sala. Monitorizare atentă a travaliului.']:['RISC SCĂZUT','bg','Naștere vaginală probabilă. Monitorizare standard.'];showRes('cs-r',`<div class="res-lbl">Risc cezariană</div><div class="res-main">${lv}</div><span class="badge ${c}">Scor: ${score}</span><div class="res-note" style="margin-top:8px">${n}</div>`);}
+function calcTwin(){const chor=document.getElementById('tw-chor').value,ga=parseFloat(document.getElementById('tw-ga').value),efwA=parseFloat(document.getElementById('tw-efwa').value),efwB=parseFloat(document.getElementById('tw-efwb').value);let disc='N/A',dC='bg',dN='';if(!isNaN(efwA)&&!isNaN(efwB)&&efwA>0&&efwB>0){const p=Math.round(Math.abs(efwA-efwB)/Math.max(efwA,efwB)*100);disc=p+'%';dC=p>=25?'br':p>=20?'bo':p>=15?'by':'bg';dN=p>=25?'Discordanță severă ≥25% – risc TTTS/sRAIU. Evaluare urgentă.':p>=20?'Discordanță semnificativă – Doppler bilunar.':p>=15?'Discordanță ușoară – eco săptămânală.':'Creștere concordantă.';}const cL=chor==='dc'?'DCDA':chor==='mc'?'MCDA':'MCMA',na=chor==='dc'?'38s':chor==='mc'?'36–37s':'32–34s',mo=chor==='dc'?'Ecografii la 4 săpt. până la 28s, bilunar ulterior.':chor==='mc'?'Ecografii bilunar de la 16s (TTTS screening).':'Monitorizare săptămânală de la 16s.';showRes('tw-r',`<div class="res-lbl">Sarcina gemelară ${cL}</div><div class="res-grid"><div class="res-item"><div class="res-val">${cL}</div><div class="res-lbl2">Corionicitate</div></div><div class="res-item"><div class="res-val"><span class="badge ${dC}">${disc}</span></div><div class="res-lbl2">Discordanță EFW</div></div><div class="res-item"><div class="res-val">${na}</div><div class="res-lbl2">Naștere recomandată</div></div></div>${dN?`<div class="res-note" style="margin-top:8px">${dN}</div>`:''}<div class="res-note" style="margin-top:8px"><strong>Monitorizare:</strong> ${mo}</div>`);}
+function calcRMI(){const ca125=parseFloat(document.getElementById('rm-ca125').value),M=parseInt(document.getElementById('rm-meno').value);if(isNaN(ca125))return alert('Introduceți CA-125.');const cnt=['rm-u1','rm-u2','rm-u3','rm-u4','rm-u5'].reduce((a,id)=>a+(document.getElementById(id).checked?1:0),0);const U=cnt===0?0:cnt===1?1:3,rmi=Math.round(U*M*ca125);const[lv,c,n]=rmi>=250?['RISC ÎNALT','br','Trimitere urgentă oncologie ginecologică.']:rmi>=200?['RISC MODERAT-ÎNALT','bo','Discuție multidisciplinară.']:rmi>=100?['RISC MODERAT','by','Evaluare suplimentară (CT, laparoscopie diagnostică).']:['RISC SCĂZUT','bg','Urmărire sau intervenție în centru standard.'];showRes('rm-r',`<div class="res-lbl">RMI</div><div class="res-main">${rmi}</div><span class="badge ${c}">${lv}</span><div class="res-grid"><div class="res-item"><div class="res-val">${U}</div><div class="res-lbl2">U eco</div></div><div class="res-item"><div class="res-val">${M}</div><div class="res-lbl2">M</div></div><div class="res-item"><div class="res-val">${ca125}</div><div class="res-lbl2">CA-125</div></div></div><div class="res-note" style="margin-top:8px">${n}</div>`);}
+function calcROMA(){const he4=parseFloat(document.getElementById('ro-he4').value),ca125=parseFloat(document.getElementById('ro-ca125').value),meno=document.getElementById('ro-meno').value;if(isNaN(he4)||isNaN(ca125))return alert('Completați HE4 și CA-125.');const pi=meno==='pre'?-12.0+2.38*Math.log(he4)+0.0626*Math.log(ca125):-8.09+1.04*Math.log(he4)+0.732*Math.log(ca125);const roma=Math.round(Math.exp(pi)/(1+Math.exp(pi))*100),cut=meno==='pre'?11.4:29.9,high=roma>=cut;showRes('ro-r',`<div class="res-lbl">ROMA (${meno==='pre'?'Premenopauză':'Postmenopauză'})</div><div class="res-main">${roma}%</div><span class="badge ${high?'br':'bg'}">${high?'Risc ÎNALT':'Risc SCĂZUT'}</span><div class="res-note" style="margin-top:8px">Prag: ${cut}% | ROMA: ${roma}%</div>`);}
+function calcBMI(){const wt=parseFloat(document.getElementById('bm-wt').value),ht=parseFloat(document.getElementById('bm-ht').value)/100;if(isNaN(wt)||isNaN(ht))return alert('Introduceți greutatea și înălțimea.');const bmi=(wt/(ht*ht)).toFixed(1),bsa=Math.sqrt((wt*(ht*100))/3600).toFixed(2),ibw=(22.5*(ht*ht)).toFixed(1);const[c,l]=bmi<18.5?['bb','Subponderal']:bmi<25?['bg','Normal']:bmi<30?['by','Supraponderal']:bmi<35?['bo','Obezitate I']:bmi<40?['bo','Obezitate II']:['br','Obezitate III'];showRes('bm-r',`<div class="res-lbl">IMC & BSA</div><div class="res-grid"><div class="res-item"><div class="res-val">${bmi}</div><div class="res-lbl2">IMC</div></div><div class="res-item"><div class="res-val">${bsa} m²</div><div class="res-lbl2">BSA</div></div><div class="res-item"><div class="res-val">${ibw} kg</div><div class="res-lbl2">Greutate ideală</div></div></div><span class="badge ${c}" style="margin-top:8px">${l}</span>`);}
+function calcMRS(){const ids=['mr-hf','mr-hrt','mr-slp','mr-dep','mr-anx','mr-cog','mr-sex','mr-uri','mr-art','mr-vag'];const sc=ids.reduce((a,id)=>a+parseInt(document.getElementById(id).value),0);const[lv,c]=sc<=4?['Fără simptome / minime','bg']:sc<=8?['Simptome ușoare','bg']:sc<=15?['Simptome moderate','by']:sc<=23?['Simptome severe','bo']:['Simptome foarte severe','br'];showRes('mr-r',`<div class="res-lbl">Scor MRS</div><div class="res-main">${sc}/44</div><span class="badge ${c}">${lv}</span>`);}
+function calcEndoCa(){const age=parseFloat(document.getElementById('ec-age').value)||50,bmi=parseFloat(document.getElementById('ec-bmi').value)||25;let score=0;if(age>55)score+=3;else if(age>45)score+=1;if(bmi>40)score+=4;else if(bmi>35)score+=3;else if(bmi>30)score+=2;if(document.getElementById('ec-lynch').checked)score+=5;if(document.getElementById('ec-bleed').checked)score+=4;['ec-dm','ec-htn','ec-nullip','ec-meno','ec-meno2','ec-pcos','ec-tam','ec-hrt'].forEach(id=>{if(document.getElementById(id).checked)score++;});const[lv,c,n]=score>=8?['RISC ÎNALT','br','Biopsie endometru + eco TV. Consult oncologic.']:score>=4?['RISC MODERAT','bo','Eco TV ± histeroscopie. Monitorizare anuală.']:['RISC SCĂZUT','bg','Screening standard. Informați pacienta.'];showRes('ec-r',`<div class="res-lbl">Risc cancer endometrial</div><div class="res-main">${lv}</div><span class="badge ${c}">Scor: ${score}</span><div class="res-note" style="margin-top:8px">${n}</div>`);}
+function calcOvRes(){const amh=parseFloat(document.getElementById('ov-amh').value),fsh=parseFloat(document.getElementById('ov-fsh').value),afc=parseFloat(document.getElementById('ov-afc').value),age=parseFloat(document.getElementById('ov-age').value)||35;let results=[];if(!isNaN(amh)){const[l,c]=amh<0.5?['Diminuată sever','br']:amh<1.1?['Scăzută','bo']:amh<=3.5?['Normală','bg']:['Crescută (risc SHO)','by'];results.push(`<div class="res-item"><div class="res-val"><span class="badge ${c}" style="font-size:11px">${l}</span></div><div class="res-lbl2">AMH ${amh}</div></div>`);}if(!isNaN(fsh)){const[l,c]=fsh>20?['Sever crescut','br']:fsh>10?['Crescut','bo']:fsh>=3?['Normal','bg']:['Scăzut','by'];results.push(`<div class="res-item"><div class="res-val"><span class="badge ${c}" style="font-size:11px">${l}</span></div><div class="res-lbl2">FSH ${fsh}</div></div>`);}if(!isNaN(afc)){const[l,c]=afc<4?['Diminuat sever','br']:afc<7?['Scăzut','bo']:afc<=15?['Normal','bg']:['Crescut (risc SHO)','by'];results.push(`<div class="res-item"><div class="res-val"><span class="badge ${c}" style="font-size:11px">${l}</span></div><div class="res-lbl2">AFC ${afc}</div></div>`);}if(!results.length)return alert('Introduceți cel puțin un marker.');showRes('ov-r',`<div class="res-lbl">Rezervă ovariană (${age} ani)</div><div class="res-grid">${results.join('')}</div>`);}
+function calcRASRM(){const ids=['ra-ps','ra-pd','ra-osr','ra-osl','ra-oadr','ra-oadl','ra-fdr','ra-fdl','ra-pod'];const sc=ids.reduce((a,id)=>a+parseInt(document.getElementById(id).value),0);const[st,c,n]=sc<=5?['Stadiu I – Minimă (1–5 pct)','bg','Depozite superficiale izolate.']:sc<=15?['Stadiu II – Ușoară (6–15 pct)','by','Leziuni superficiale ± aderențe minime.']:sc<=40?['Stadiu III – Moderată (16–40 pct)','bo','Endometrioame ± aderențe multiple.']:['Stadiu IV – Severă (>40 pct)','br','Aderențe dense, obliterare Douglas.'];showRes('ra-r',`<div class="res-lbl">rASRM</div><div class="res-main">${sc} puncte</div><span class="badge ${c}">${st}</span><div class="res-note" style="margin-top:8px">${n}</div>`);}
+function calcEnzian(){const a=document.getElementById('ez-a').value,b=document.getElementById('ez-b').value,c=document.getElementById('ez-c').value,f=document.getElementById('ez-f').value,oma=document.getElementById('ez-oma').value,adh=parseInt(document.getElementById('ez-adh').value);const tot=parseInt(a)+parseInt(b)+parseInt(c)+parseInt(f)+adh;const[sv,cl,n]=tot===0?['Fără DIE','bg','Nicio endometrioză profundă identificată.']:tot<=3?['DIE ușoară','by','Management conservator sau medicamentos.']:tot<=7?['DIE moderată','bo','Planificare chirurgicală multidisciplinară.']:['DIE severă','br','Abord chirurgical multidisciplinar obligatoriu.'];const oL=oma==='none'?'Absent':oma==='bilateral'?'Bilateral':oma==='right'?'Drept':'Stâng';showRes('ez-r',`<div class="res-lbl">Enzian DIE</div><div class="res-main">A${a} B${b} C${c} F${f}</div><span class="badge ${cl}">${sv}</span><div class="res-grid"><div class="res-item"><div class="res-val">A${a}</div><div class="res-lbl2">Rectovaginal</div></div><div class="res-item"><div class="res-val">B${b}</div><div class="res-lbl2">Uterosacrate</div></div><div class="res-item"><div class="res-val">C${c}</div><div class="res-lbl2">Rect/sigmoid</div></div><div class="res-item"><div class="res-val">F${f}</div><div class="res-lbl2">Alte regiuni</div></div><div class="res-item"><div class="res-val">${oL}</div><div class="res-lbl2">Endometriom</div></div></div><div class="res-note" style="margin-top:8px">${n}</div>`);}
+function calcPBAC(){const p=parseFloat(document.getElementById('pb-pads').value)||0,t=parseFloat(document.getElementById('pb-tamp').value)||0,cs=parseFloat(document.getElementById('pb-cls').value)||0,cl=parseFloat(document.getElementById('pb-cll').value)||0,sp=parseFloat(document.getElementById('pb-spot').value)||0;const score=Math.round(p+t+cs+cl*5+sp*0.5);const[lv,c,n]=score>=100?['Menoragie semnificativă (≥100)','br','Hemogramă, feritină, eco TV, histeroscopie. Discutați opțiuni terapeutice.']:score>=50?['Sângerare moderată (50–99)','bo','Monitorizare. Investigații dacă simptome asociate.']:['Sângerare normală (<50)','bg','Sub pragul de menoragie. Reevaluare dacă se agravează.'];showRes('pb-r',`<div class="res-lbl">Scor PBAC</div><div class="res-main">${score} pct</div><span class="badge ${c}">${lv}</span><div class="res-note" style="margin-top:8px">${n}</div>`);}
+function calcECOG(){const sel=document.querySelector('input[name="ecog"]:checked');if(!sel)return alert('Selectați un status ECOG.');const v=parseInt(sel.value);const lb=['Activ complet','Ambulatoriu – muncă ușoară','Ambulatoriu – nu poate munci','Îngrijire limitată – >50% în pat','Complet dependent','Decedat'];const cl=['bg','bg','by','bo','br','br'];const nt=['Tolerează toate liniile de tratament.','Toleranță bună la chimioterapie standard.','Tratament paliativ preferat.','Tratament sistemic cu risc crescut.','Tratament agresiv contraindicat. Îngrijiri paliative.',''];showRes('eg-r',`<div class="res-lbl">Status ECOG</div><div class="res-main">ECOG ${v}</div><span class="badge ${cl[v]}">${lb[v]}</span><div class="res-note" style="margin-top:8px">${nt[v]}</div>`);}
+
 buildCalcDropdown();
 renderCalc();
 </script>
